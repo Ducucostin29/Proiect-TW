@@ -7,5 +7,5 @@ p{
 }
 
 h1{
-    border: 1px solid var(--culoare-fundal);
+    border: 5px solid var(--culoare-fundal);
 }
