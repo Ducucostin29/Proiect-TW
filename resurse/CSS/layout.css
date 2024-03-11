@@ -1,0 +1,7 @@
+#grid-pagina{
+    display: grid;
+}
+
+#grid-pagina>*{
+    outline: 2px solid skyblue;
+}
