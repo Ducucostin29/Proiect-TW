@@ -1,3 +1,8 @@
+html{
+    font-size: 18px;
+    font-family: "Madimi One" 15px;
+}
+
 #grid-pagina{
     display: grid;
     grid-template-columns: repeat(3,1fr); /*1fr 1fr 1fr ;*/
@@ -12,6 +17,7 @@
 
 #grid-pagina>*{
     outline: 2px solid skyblue;
+    padding: 1em;
 }
 
 #grid-pagina>figure{
@@ -46,3 +52,37 @@
 #index-intrebari{
     grid-area: index-intrebari;
 }
+
+.intro-Servicii{
+    font-size: 1.5rem;
+}
+
+
+@media screen and  (max-width: 1200px) {
+
+    html{
+        font-size: 15px;
+    }
+
+    #grid-pagina{
+        grid-template-columns: repeat(3,1fr); /*1fr 1fr 1fr ;*/
+        grid-template-areas: "welcome welcome"
+                            "promotii promotii"
+                            "orar orar"
+                            "fig1 produse"
+                            "fig2 produse"
+                            "fig3 produse"
+                            "index-intrebari index-intrebari"
+                            "anunturi anunturi";
+                }
+            }
+ @media screen and  (max-width: 800px) {
+
+    html{
+        font-size: 12px;
+    }
+
+    #grid-pagina{
+        display: block;
+                }
+            }
