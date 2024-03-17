@@ -13,12 +13,12 @@ h1{
     border: 5px solid var(--culoare-fundal);
     margin-left: auto;
     margin-right: auto;
-    border: 5px solid black;
-    box-shadow: 5px 5px 5px black;
+    border: 5px solid blue;
+    box-shadow: 5px 5px 5px rgb(4, 241, 190);
     text-align: center;
 }
 
 h2{
     border: 2px solid(--culoare-fundal);
-    
+
 }
