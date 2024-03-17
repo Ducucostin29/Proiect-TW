@@ -17,3 +17,8 @@ h1{
     box-shadow: 5px 5px 5px black;
     text-align: center;
 }
+
+h2{
+    border: 2px solid(--culoare-fundal);
+    
+}
