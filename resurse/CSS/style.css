@@ -3,6 +3,13 @@ body{
     --dim-spatiere:50px;
     padding-left: var(--dim-spatiere);
     padding-right: var(--dim-spatiere);
+    --primary-color:#2596BE;
+    --complementary-color-1:#00E0D5;
+    --complementary-color-2:#00E03C;
+    --accent-color-1:#005EE0;
+    --accent-color-2:#4BE0D8;
+    --accent-color-3:#00E088;
+
 }
 
 p{
@@ -13,8 +20,8 @@ h1{
     border: 5px solid var(--culoare-fundal);
     margin-left: auto;
     margin-right: auto;
-    border: 5px solid blue;
-    box-shadow: 5px 5px 5px rgb(4, 241, 190);
+    border: 5px solid --primary-color;
+    box-shadow: --accent-color-1;
     text-align: center;
 }
 
