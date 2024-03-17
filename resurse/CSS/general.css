@@ -30,8 +30,46 @@
     color: aqua;
   }
 
+  #tab-orar td, #tab-orar th{
+      border: 1px solid black;
+  }
+
+  #tab-orar thead th:nth-child(2n+1){
+    background-color: aqua;
+  }
+
+  #tab-orar{
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 5px inset green; 
+  }
+  
+  th, td {
+    border: 1px solid transparent; 
+    padding: 10px;
+    text-align: center;
+  }
+  
+  thead th {
+    background-color: yellow;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: red;
+  }
+  
+  tbody tr:nth-child(odd) {
+    background-color: blue;
+  }
+  
+  tbody tr:hover {
+    outline: 5px solid transparent; 
+    transition: outline 0.5s; 
+  }
 
 
-  /* #triunghi:hover{
-    transform: scale(1.5,1.5) translateY(30%) rotateZ(-90deg);
-  } */
