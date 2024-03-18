@@ -1,3 +1,16 @@
+body{
+  --culoare1:#F097E1;
+  --culoare-inchisa:rgb(165, 13, 165);
+  --culoare-deschisa:rgb(252, 178, 252);
+  --culoare-text:black;
+  --culoare-text-selectat:white;
+
+  --spatiere:100px;
+  padding-left:var(--spatiere);
+  padding-right:var(--spatiere);
+}
+
+
 #link-top{
     position:fixed;
     bottom:0.3em;
