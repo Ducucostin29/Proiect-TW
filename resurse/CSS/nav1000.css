@@ -1,0 +1,13 @@
+nav{
+    --inaltime-mediu:2.2em;
+    --inaltime-buton:120px;
+}
+
+
+#acasa_mediu{
+    display: block;
+}
+
+#acasa{
+    display: none;
+}
