@@ -3,13 +3,25 @@ html{
     font-family: "Love Ya Like A Sister", cursive;
     font-weight: 400;
     font-style: normal;
+
+    --culoare-fundal:#65D5EB;
+    --dim-spatiere:50px;
+    padding-left: var(--dim-spatiere);
+    padding-right: var(--dim-spatiere);
+    --primary-color:#2596BE;
+    --complementary-color-1:#00E0D5;
+    --complementary-color-2:#00E03C;
+    --accent-color-1:#005EE0;
+    --accent-color-2:#4BE0D8;
+    --accent-color-3:#00E088;
+    
 }
 
 #grid-pagina{
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(4,1fr); /*1fr 1fr 1fr 1fr ;*/
-    grid-template-areas: "welcome welcome welcome welcome"
+    grid-template-areas:"welcome welcome welcome welcome"
                         "welcome welcome welcome welcome"
                         "evenimente tabel tabel anunturi"
                         "utilizatori tabel tabel anunturi"
@@ -18,12 +30,12 @@ html{
 }
 
 #grid-pagina>*{
-    outline: 2px solid skyblue;
+    outline: 2px solid var(--complementary-color-2);
     padding: 1em;
 }
 
-#grid-pagina>figure{
-    margin: 0;
+.p_schiuri{
+    width: 50%;
 }
 
 #welcome{
@@ -57,7 +69,7 @@ html{
     grid-area: parteneri;
 }
 
-.intro-Servicii{
+.intro-tabel{
     font-size: 1.5rem;
 }
 
@@ -69,10 +81,10 @@ html{
     }
 
     #grid-pagina{
-        grid-template-columns: repeat(4,1fr); /* 1fr 1fr 1fr 1fr ;*/
-        grid-template-areas: "welcome welcome"
-                            "welcome welcome"
-                            "evenumente tabel anunturi"
+        grid-template-columns: repeat(3,1fr); /* 1fr 1fr 1fr 1fr ;*/
+        grid-template-areas: "welcome welcome welcome"
+                            "welcome welcome welcome"
+                            "evenimente tabel anunturi"
                             "utilizatori tabel anunturi"
                             "utilizatori date_utilizator date_site"
                             "echipa_noastra parteneri index-intrebari";

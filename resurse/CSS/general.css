@@ -1,9 +1,16 @@
 body{
-  --culoare1:#F097E1;
-  --culoare-inchisa:rgb(165, 13, 165);
-  --culoare-deschisa:rgb(252, 178, 252);
+  --culoare1:#2596BE;
+  --culoare-inchisa: #005EE0;
+  --culoare-deschisa:#00E0D5;
   --culoare-text:black;
   --culoare-text-selectat:white;
+
+  --primary-color:#2596BE;
+  --complementary-color-1:#00E0D5;
+  --complementary-color-2:#00E03C;
+  --accent-color-1:#005EE0;
+  --accent-color-2:#4BE0D8;
+  --accent-color-3:#00E088;
 
   --spatiere:100px;
   padding-left:var(--spatiere);
@@ -21,12 +28,12 @@ body{
     height:3rem;
     line-height:3rem;
     text-align:center;
-    border:5px solid blue;
+    border:5px solid var(--culoare-deschisa);
     border-radius:50%;
     background: rgb(220,220,220);
     transition: transform 1s linear; /*opacity 3s linear*/
     transition: all 1s linear;
-    box-shadow: 0px 0px 5px 5px blue;
+    box-shadow: 0px 0px 5px 5px var(--accent-color-1);
 
   }
   #link-top:hover{
@@ -40,7 +47,7 @@ body{
     margin-top: -10px;
     font-size: 45px;
     font-style: normal;
-    color: aqua;
+    color: var(--complementary-color-1);
   }
 
   #tab-orar td, #tab-orar th{
@@ -48,7 +55,7 @@ body{
   }
 
   #tab-orar thead th:nth-child(2n+1){
-    background-color: aqua;
+    background-color: var(--accent-color-3);
   }
 
   #tab-orar{
@@ -59,7 +66,7 @@ body{
   table {
     border-collapse: collapse;
     width: 100%;
-    border: 5px inset green; 
+    border: 5px inset var(--culoare-text); 
   }
   
   th, td {
@@ -69,20 +76,53 @@ body{
   }
   
   thead th {
-    background-color: yellow;
+    background-color: var(--complementary-color-1);
   }
   
   tbody tr:nth-child(even) {
-    background-color: red;
+    background-color: aqua;
   }
   
   tbody tr:nth-child(odd) {
-    background-color: blue;
+    background-color: limegreen;
   }
   
   tbody tr:hover {
     outline: 5px solid transparent; 
     transition: outline 0.5s; 
   }
+
+  .container-iframe{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 50%;
+}
+.container-iframe iframe{
+    width: 100%;
+}
+
+.taburi-iframe{
+    display:flex;
+    flex-direction: line;
+    justify-content: center;
+    margin-inline: 0.5em;
+    margin-right: 0.5em;
+}
+.taburi-iframe>a{
+    border:1px solid var(--accent-color-2);
+    background-color: var(--primary-color);
+    color: yellow;
+    margin-bottom: 0.4em;
+    margin-right: 200px;
+    padding: 0.6em;
+    transition: transform 1s linear; /*opacity 3s linear*/
+    transition: all 1s linear;
+    box-shadow: 0px 0px 5px 5px var(--accent-color-1);
+}
+
+.taburi-iframe>a:hover{
+    background-color: var(--complementary-color-2);
+    color: red;
+}
 
 

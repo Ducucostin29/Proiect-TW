@@ -18,7 +18,10 @@
     <link rel="stylesheet" href="resurse/CSS/layout.css" type="text/css">
     <link rel="stylesheet" href="resurse/CSS/general.css" type="text/css">
     <link rel="stylesheet" href="resurse/CSS/nav.css" type="text/css">
+    <link rel="stylesheet" href="resurse/css/nav1000.css" type="text/css" media="screen and (max-width:1000px)"/>
+    <link rel="stylesheet" href="resurse/css/nav700.css" type="text/css" media="screen and (max-width:700px)"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
     <meta name="msapplication-TileColor" content="#da532c">
@@ -47,88 +50,120 @@
     </header>
 
     <main>
+        
         <div id="grid-pagina">
             <section id="welcome">
-                <h2>Azi e frumos</h2>
-            </section>
-            <section id="tabel">
-                <h2>Azi e frumos</h2>
-                <h2>Azi e frumos</h2>
-                <h2>Azi e frumos</h2>
-            </section>
-            <section id="evenimente">
-                <h2>Azi e frumos</h2>
-            </section>
-            <section id="anunturi">
-                <h2>Azi e frumos</h2>
-            </section>
-            <section id="utilizatori">
-                <h2>Azi e frumos</h2>
-            </section>
-            <section id="date_utilizator">
-                <h2>Azi e frumos</h2>
-            </section>
-            <section id="date_site">
-                <h2>Azi e frumos</h2>
-            </section>
-            <section id="echipa_noastra">
-                <h2>Azi e frumos</h2>
-            </section>
-            <section id="index-intrebari">
-                <h2>Azi e frumos</h2>
-            </section>
-            <section id="parteneri">
-                <h2>Azi e frumos</h2>
-            </section>
-        </div>
-        <section id="welcome">
-            <h2>Bine ati venit!</h2>
-            <p>
-                <a href="https://ro.wikipedia.org/wiki/Schi" target="_blank">Skiwiki</a>
-                În aceast site puteti gasii <b>produse de iarna </b> si <b>echipamente pentru sporturi de iarna</b>, precum: <b>geci, schiuri, snowbord, clapari, bete, casti, booti, manusi, cagule, caciuli, sosete, bluze termice, polare,</b> precum si anumite servicii pentru <b>ascutire schiuri/placi snowboard, reglare clapari, reglare schiuri etc</b> <i lang="en">
-            </p>
-            <figure></figure>
+                <h2>Bine ati venit!</h2>
+                    <p>
+                        <a href="https://ro.wikipedia.org/wiki/Schi" target="_blank">Skiwiki</a>
+                        În aceast site puteti gasii <b>produse de iarna </b> si <b>echipamente pentru sporturi de iarna</b>, precum: <b>geci, schiuri, snowbord, clapari, bete, casti, booti, manusi, cagule, caciuli, sosete, bluze termice, polare,</b> precum si anumite servicii pentru <b>ascutire schiuri/placi snowboard, reglare clapari, reglare schiuri etc</b>
+                    </p>
+                <figure>
 
                 <picture>
-                    <source srcset="./resurse/imagini/ski.jpg" media="(max-width:700px)"/>
-                    <source srcset="./resurse/imagini/snowboard.jpg" media="(max-width:1200px)"/>
-                    <img src="./resurse/favicon/Imagine ski.jpg" width="400" height="500" alt="Imagine">
+                    <source class="p_schiuri" srcset="./resurse/imagini/ski.jpg" media="(max-width:700px)"/>
+                    <source class="p_schiuri" srcset="./resurse/imagini/snowboard.jpg" media="(max-width:1200px)"/>
+                    <img class="p_schiuri" src="./resurse/favicon/Imagine ski.jpg" width="400" height="500" alt="Imagine">
                 </picture>
 
                 <figcaption>
                     Cele mai cautate echipamente!
                 </figcaption>
 
-            </figure>
-
-
-
-        </section>
-
+                </figure>
+            </section>
+            <section id="tabel">
+                <h2>Tabelul va fi inserat</h2>
+            </section>
+            <section id="evenimente">
+                <h2>Viitoare evenimente vor fi adaugate aici</h2>
+            </section>
+            <section id="anunturi">
+                <div class="intro-tabel"><div>Casca schi reducere</div><div>snowboard placa reducere</div><div>bete leki la super oferta</div></div>
+            </section>
+            <section id="utilizatori">
+                <h1>utilizatori</h1>
+                <h1>utilizatori</h1>
+                <h1>utilizatori</h1>
+                <h1>utilizatori</h1>
+            </section>
+            <section id="date_utilizator">
+                <h2>Date utilizator</h2>
+            </section>
+            <section id="date_site">
+                <h2>date_site</h2>
+            </section>
+            <section id="echipa_noastra">
+                <div class="table-container">
+                    <table>
+                      <caption>Cei mai buni angajati</caption>
+                      <thead>
+                        <tr>
+                          <th>Nume</th>
+                          <th>Prenume</th>
+                          <th>Numar sapatamani(angajatul sapatamanii)</th>
+                          <th>Premiu</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Marin</td>
+                          <td>Gabriel-Horatiu</td>
+                          <td>5 sapatamani</td>
+                          <td>Cel mai bun vanzator de schiuri</td>
+                        </tr>
+                        <tr>
+                          <td>Ion</td>
+                          <td>Stefan-Gabriel</td>
+                          <td>10 saptamani</td>
+                          <td>Cel mai bun reparator de schiuri</td>
+                        </tr>
+                        <tr>
+                          <td>Popescu</td>
+                          <td>Maria</td>
+                          <td>21 saptamani</td>
+                          <td >Cea mai buna vanzatoare de snowbord</td>
+                        </tr>
+                        <tr>
+                          <td>Ilie</td>
+                          <td>Mihaela</td>
+                          <td>12 saptamani</td>
+                          <td>Cea mai buna monitoare de schi</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td>Rezultat</td>
+                          <td colspan="3">Tabelul top 4 cei mai buni angajati ai firmei</td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+            </section>
+            <section id="index-intrebari">
+                <h2>Intrebari frecvente</h2>
+            <details><summary>Produsele de pe site sunt noi</summary>
+                <p>Da!</p>
+            </details>
+            </section>
+            <section id="parteneri">
+                <h2>Parteneri</h2>
+            </section>
+        </div>
         <section id="Produse">
             <h2>Produsele noastre sunt:</h2>
 
             <p><b>Schiul <abbr title = "Schiul">ski</abbr> colectează diferite discipline sportive de iarnă, unite prin utilizarea schiurilor ca instrument pentru deplasarea distanțelor pe suprafețe înzăpezite. Sporturile care folosesc schiurile departe de zăpadă sunt schiul nautic și schiul pe iarbă. Multe tipuri de evenimente de schi competitive sunt recunoscute de <abbr title = "Comitetul Olimpic Internațional">COI</abbr>  și de <abbr title = "Federația Internațională de Schi">FIS</abbr>.</b></p>
 
-            
-            <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/SUy9lRGm_XM?si=Lf38whpIGP_UtHA2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-            <div id="stilizare-taburi" class="tab-container">
-                <a href="#" class="tab active">Tab 1</a>
-                <a href="#" class="tab active">Tab 2</a>
-                <div class="iframe-container">
-                    <div class="tab-iframe">
+                <div class="container-iframe">
+                    <div class="taburi-iframe">
                         <a href="https://www.youtube.com/embed/SUy9lRGm_XM?si=Lf38whpIGP_UtHA2" target="ifr-video">Schirui atomic</a>
                         <a href="https://www.youtube.com/embed/Olpc3Y4qIWQ?si=PwmePTi0duNfAoUE" target="ifr-video">Schirui atomic G9</a>
+                        <a href="https://youtu.be/DtET98-cS5Q?si=VjQDoZo-i5vakiWO" target="ifr-video">Visit Ischgl</a>
+                        
                     </div>
+                    <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/SUy9lRGm_XM?si=Lf38whpIGP_UtHA2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-              </div>
-
-            <h2>Intrebari frecvente</h2>
-            <details><summary>Produsele de pe site sunt noi</summary>
-                <p>Da!</p>
-            </details>
-
         </section>
 
         <section id="Servicii">
@@ -232,52 +267,6 @@
             </tbody>
             <tfoot><tr><td colspan="6">In perioada sarbatorilor legale inchis!</td></tr></tfoot>
         </table> 
-
-        <div class="table-container">
-            <table>
-              <caption>Cei mai buni angajati</caption>
-              <thead>
-                <tr>
-                  <th>Nume</th>
-                  <th>Prenume</th>
-                  <th>Numar sapatamani(angajatul sapatamanii)</th>
-                  <th>Premiu</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Marin</td>
-                  <td>Gabriel-Horatiu</td>
-                  <td>5 sapatamani</td>
-                  <td>Cel mai bun vanzator de schiuri</td>
-                </tr>
-                <tr>
-                  <td>Ion</td>
-                  <td>Stefan-Gabriel</td>
-                  <td>10 saptamani</td>
-                  <td>Cel mai bun reparator de schiuri</td>
-                </tr>
-                <tr>
-                  <td>Popescu</td>
-                  <td>Maria</td>
-                  <td>21 saptamani</td>
-                  <td >Cea mai buna vanzatoare de snowbord</td>
-                </tr>
-                <tr>
-                  <td>Ilie</td>
-                  <td>Mihaela</td>
-                  <td>12 saptamani</td>
-                  <td>Cea mai buna monitoare de schi</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td>Rezultat</td>
-                  <td colspan="3">Tabelul top 4 cei mai buni angajati ai firmei</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
 
         <a href="http://google.com" target="_blank">google</a>
 
