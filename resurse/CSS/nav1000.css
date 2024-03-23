@@ -3,11 +3,17 @@ nav{
     --inaltime-buton:120px;
 }
 
-
-#acasa_mediu{
+#acasa-mediu{
     display: block;
 }
 
 #acasa{
     display: none;
+}
+
+@media screen and  (max-width: 1000px) {
+
+    html{
+        font-size: 10px;
+    }
 }

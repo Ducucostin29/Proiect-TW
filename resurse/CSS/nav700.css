@@ -20,7 +20,8 @@ ul.meniu{
     display: block;
     z-index: 2;
     position: relative;
-    animation-name: aparitie_meniu_p;
+    transform-origin: top left;
+    animation-name: rotire;
     animation-iteration-count:1;
     animation-duration:0.7s;
     animation-fill-mode:forwards;
@@ -69,13 +70,15 @@ nav ul.meniu>li li a:before{
 
 }
 
-@keyframes aparitie_meniu_p{
+@keyframes rotire{
     0%{
-        opacity:0;
-        
-    } 
+        transform: rotate(-90deg);
+        opacity: 0;
+    }
+
 	100%{
-    	opacity:1;
+    	transform:rotate(0deg);
+        opacity: 1;
     }
 }
 

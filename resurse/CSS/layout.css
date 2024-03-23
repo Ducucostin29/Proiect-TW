@@ -30,7 +30,7 @@ html{
 }
 
 #grid-pagina>*{
-    outline: 2px solid var(--complementary-color-2);
+    border: 2px solid var(--complementary-color-2);
     padding: 1em;
 }
 
