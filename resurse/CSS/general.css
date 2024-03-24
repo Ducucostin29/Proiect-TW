@@ -113,7 +113,7 @@ body{
     background-color: var(--primary-color);
     color: yellow;
     margin-bottom: 0.4em;
-    margin-right: 100px;
+    margin-right: 3em;
     padding: 0.6em;
     transition: transform 1s linear; /*opacity 3s linear*/
     transition: all 1s linear;
@@ -124,5 +124,127 @@ body{
     background-color: var(--complementary-color-2);
     color: red;
 }
+
+
+#watermark,#absolut{
+  display:none;
+}
+
+
+#grid-pagina {
+  display: block;
+  font-size: 10px;
+  box-sizing: border-box;
+  page-break-before: always;
+  background-color: white;
+}
+
+@media print {
+  #absolut {
+    display: block;
+    position: absolute;
+    width: 70%;
+    left: 15%; /* 100% - 70% / 2 = 15% */
+    bottom: 0;
+    padding: 10px; /* Adăugăm puțin spațiu între conținut și marginile banner-ului */
+    border: 4px inset black;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Adăugăm o opacitate pentru a face textul mai vizibil */
+  }
+  
+  #absolut::after {
+    content: "Acesta este un proiect școlar!";
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  /* Stilizarea meniului */
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    margin-bottom: 5px; /* Spatiere intre elementele listei */
+  }
+
+  /* Adăugarea unui page break după meniu */
+  nav {
+    page-break-after: always;
+  }
+
+  /* Adăugarea unui page break înaintea footer-ului */
+  footer {
+    page-break-before: always;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #grid-pagina {
+    display: block;
+  }
+
+  #watermark
+		{
+			display: block;
+			position: fixed;/*apare pe toate paginile*/
+			bottom:0;
+			color:black;
+			right:0;
+		}
+		#watermark::after{
+			
+			opacity:0.4;
+			padding:5px;
+      width: 4cm;
+      height:1cm;
+			display: block;
+			background: white;
+      font-weight: bold;
+			border:3px solid black;
+			border-top-left-radius:10px;
+			border-bottom-left-radius:10px;
+      border-top-right-radius:10px;
+			border-bottom-right-radius:10px;
+			content:"Apostu Alexandru-Costin";
+		}
+
+  #end {
+    page-break-before: always;
+  }
+
+  img, video, iframe, audio, figcaption, a[id="link-top"] {
+    display: none;
+  }
+
+
+  @page {
+    size: A4 portrait;
+    margin-top: 2cm;
+    margin-bottom: 2cm;
+  }
+
+  @page:left {
+    margin-left: 3cm;
+    margin-right: 1cm;
+  }
+
+  @page:right {
+    margin-left: 1cm;
+    margin-right: 3cm;
+  }
+}
+
+
+
+
 
 

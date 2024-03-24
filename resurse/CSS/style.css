@@ -1,151 +1,28 @@
-body{
-    --culoare-fundal:#65D5EB;
-    --dim-spatiere:50px;
-    padding-left: var(--dim-spatiere);
-    padding-right: var(--dim-spatiere);
-    --primary-color:#2596BE;
-    --complementary-color-1:#00E0D5;
-    --complementary-color-2:#00E03C;
-    --accent-color-1:#005EE0;
-    --accent-color-2:#4BE0D8;
-    --accent-color-3:#00E088;
+body {
+  --culoare-fundal: #65D5EB;
+  --dim-spatiere: 50px;
+  padding-left: var(--dim-spatiere);
+  padding-right: var(--dim-spatiere);
+  --primary-color: #2596BE;
+  --complementary-color-1: #00E0D5;
+  --complementary-color-2: #00E03C;
+  --accent-color-1: #005EE0;
+  --accent-color-2: #4BE0D8;
+  --accent-color-3: #00E088;
 }
 
-p{
-    background-color:vaR(--culoare-fundal);
+p {
+  background-color: var(--culoare-fundal);
 }
 
-h1{
-    border: 5px solid var(--culoare-fundal);
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid --primary-color;
-    box-shadow: --accent-color-1;
-    text-align: center;
+h1 {
+  border: 5px solid var(--primary-color);
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: var(--accent-color-1); /* Corectat numele variabilei */
+  text-align: center;
 }
 
-h2{
-    border: 2px solid(--culoare-fundal);
-
+h2 {
+  border: 2px solid var(--culoare-fundal); /* Corectat sintaxa pentru culoare */
 }
-
-/* Stiluri generale pentru printare */
-@media print {
-    /* Ascunde elementele media */
-    img, video, iframe, [aria-describedby] {
-      display: none !important;
-    }
-    
-    /* Ascunde linkul către începutul paginii */
-    a[href="#top"] {
-      display: none !important;
-    }
-    
-    /* Afiseaza linkurile ca text normal */
-    a {
-      text-decoration: none !important;
-      color: inherit !important;
-    }
-    
-    /* Afiseaza gridul paginii ca block */
-    body {
-      display: block !important;
-    }
-    
-    /* Paginile din stânga */
-    @page :left {
-      margin-left: 3cm;
-      margin-right: 1cm;
-    }
-    
-    /* Paginile din dreapta */
-    @page :right {
-      margin-left: 1cm;
-      margin-right: 3cm;
-    }
-    
-    /* Watermark */
-    body::after {
-      content: "Nume Prenume";
-      position: fixed;
-      bottom: 1cm;
-      right: 1cm;
-      width: 4cm;
-      height: 1cm;
-      border: 3px solid black;
-      border-radius: 10px;
-      background-color: white;
-      opacity: 0.4;
-      text-align: center;
-      font-weight: bold;
-    }
-  }
-  
-  /* Stiluri specifice pentru pagina */
-  /* Banner */
-  footer {
-    display: block !important;
-  }
-  
-  footer p {
-    text-align: center;
-    width: 70%;
-    margin: auto;
-    border: 4px inset black;
-    padding: 10px;
-  }
-  
-  /* Headingul de nivel 1 */
-  h1 {
-    text-align: center;
-  }
-  
-  /* Meniu sub formă de listă neordonată */
-  nav ul ul {
-    display: none;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    text-align: center;
-  }
-  
-  nav ul li {
-    display: block;
-  }
-  
-  /* Afisare banner josul primei pagini */
-  @media print {
-    footer::before {
-      content: "Acesta este un proiect școlar!";
-      display: block;
-      text-align: center;
-      width: 70%;
-      margin: auto;
-      border: 4px inset black;
-      padding: 10px;
-    }
-  }
-  
-  /* Pagina de start - centrat orizontal */
-  @media print {
-    h1 {
-      page-break-after: always;
-    }
-  }
-  
-  /* Pagina de start - meniu sub forma de lista neordonata */
-  @media print {
-    nav ul {
-      display: block;
-      page-break-after: always;
-    }
-  }
-  
-  /* Pagina de start - page break inainte de footer */
-  @media print {
-    footer {
-      page-break-before: always;
-    }
-  }
-  
