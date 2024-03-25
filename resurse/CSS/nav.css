@@ -89,7 +89,7 @@ nav{
 
 
 .meniu li:hover>a{
-    background-color: pink;
+    background-color: var(--culoare-inchisa);
     
 }
 
