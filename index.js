@@ -52,7 +52,7 @@ app.get("/suma/:a/:b", function(req,res){
 
 app.get("/*",function(req,res){
     console.log(req.url)
-    res.render("pagini"+register.url, function(rezHtml, err){
+    res.render("pagini"+register.url, function(err,rezHtml){
         console.log(rezHtml);
         console.log("Eroare",err);
         res.send(rezHtml);
