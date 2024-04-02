@@ -100,3 +100,16 @@ html{
         display: block;
                 }
             }
+
+.video-player {
+    display: block;
+    margin: 0 auto;
+}
+
+/* CSS for the text gradient in VTT */
+::cue {
+    background: linear-gradient( var(--accent-color-1),var(--complementary-color-1)); 
+    color: var(--culoare-text); 
+    -webkit-background-clip: text; 
+    background-clip: text; 
+}

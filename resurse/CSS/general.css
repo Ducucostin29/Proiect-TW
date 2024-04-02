@@ -111,18 +111,20 @@ body{
 .taburi-iframe>a{
     border:1px solid var(--accent-color-2);
     background-color: var(--primary-color);
-    color: yellow;
+    color: red;
     margin-bottom: 0.4em;
     margin-right: 3em;
     padding: 0.6em;
     transition: transform 1s linear; /*opacity 3s linear*/
     transition: all 1s linear;
     box-shadow: 0px 0px 5px 5px var(--accent-color-1);
+    border-bottom-left-radius:10px;
+		border-bottom-right-radius:10px;
 }
 
 .taburi-iframe>a:hover{
     background-color: var(--complementary-color-2);
-    color: red;
+    color: black;
 }
 
 
@@ -241,6 +243,51 @@ body{
     margin-right: 3cm;
   }
 }
+
+a:visited {
+  color: red; 
+}
+
+a[href^="http"]::before {
+  content: "⮳";
+  font-size: 150%; /* Font-size cu 50% mai mare față de dimensiunea fontului linkului */
+  margin-right: 0.2em;
+}
+
+
+a[href^="http"]:hover::before {
+  color: red; 
+}
+
+main a, main p a {
+  position: relative;
+  display: inline-block;}
+
+main a::after, main p a::after {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 50%;
+  background: radial-gradient(circle,var(--accent-color-2) 0%, var(--accent-color-2) 40%, transparent 80%, transparent 100%);
+  background-position: center;
+  background-size: 0;
+  border-radius: 50%;
+  transition: background-size 1s ease-in-out;
+  z-index: -1;
+}
+
+main a:hover::after, main p a:hover::after {
+  background-size: 100%;
+}
+
+a:active {
+  color: var(--culoare-inchisa);
+  border: 2px solid black; /* Apare un border în jurul linkului */
+}
+
 
 
 
