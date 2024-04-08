@@ -247,11 +247,28 @@
             </tbody>
             <tfoot><tr><td colspan="6">In perioada sarbatorilor legale inchis!</td></tr></tfoot>
         </table> 
+    
 
-        <a href="http://google.com" target="_blank">google</a>
-        <a href="https://teams.microsoft.com/v2/" target="_blank">teams</a>
-        <a href="https://www.youtube.com/" target="_blank">YouTube</a>
-        <a href="https://www.instagram.com/" target="_blank">instagram</a>
+        <a href="http://google.com" target="_blank"
+        class="special-link">google</a>
+        <a href="https://teams.microsoft.com/v2/" target="_blank"
+        class="special-link">teams</a></a>
+        <a href="https://www.youtube.com/" target="_blank"
+        class="special-link">youtube</a></a>
+        <a href="https://www.instagram.com/" target="_blank"
+        class="special-link">instagram</a></a>
+
+        <section id="galerie-statica">
+            <h2>Galerie</h2>
+            <div id="grid-galerie">
+                <% for (let imag of locals.imagini){ %>
+                    <figure>
+                        <img src="<%= imag.fisier %>" alt="briose">
+                        <figcaption><%= imag.descriere %></figcaption>
+                    </figure>
+                <%} %>
+            </div>
+        </section>
 
     </main>
 

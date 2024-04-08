@@ -1,14 +1,15 @@
 const express = require("express");//include biblioteca express
 const fs= require('fs');//include biblioteca fs sistemul de fisiere poate sa fac chesti primeasca citeasca etc
 const path=require('path');// se uita la cai
-// const sharp=require('sharp');
+const sharp=require('sharp');
 // const sass=require('sass');
 // const ejs=require('ejs');
 
 
 
 obGlobal = {
-    obErori: null
+    obErori: null,
+    obImagini: null
 }
 
 vect_foldere = ["temp", "temp1"];
@@ -33,9 +34,9 @@ app.use("/resurse", express.static(__dirname+"/resurse"));//fac un alias
 //    res.sendFile(__dirname+"/index.html")
 //})
 
-app.get(["/", "/home", "/index"], function (req, res) {
-    res.render("pagini/index", {IP: req.IP});
-})
+app.get(["/","/home","/index"], function(req, res){
+    res.render("pagini/index", {ip: req.ip, imagini:obGlobal.obImagini.imagini});
+});
 
 app.get("/cerere", function(req,res){
     res.send("<b>Hello</b><span style='color:red'> world !</span>");
@@ -136,6 +137,30 @@ function afisareEroare(res, _identificator, _titlu, _text, _imagine){
         })
     }
 }
+
+function initImagini(){
+    var continut= fs.readFileSync(__dirname+"/resurse/json/galerie.json").toString("utf-8");
+
+    obGlobal.obImagini=JSON.parse(continut);
+    let vImagini=obGlobal.obImagini.imagini;
+
+    let caleAbs=path.join(__dirname,obGlobal.obImagini.cale_galerie);
+    let caleAbsMediu=path.join(__dirname,obGlobal.obImagini.cale_galerie, "mediu");
+    if (!fs.existsSync(caleAbsMediu))
+        fs.mkdirSync(caleAbsMediu);
+
+    //for (let i=0; i< vErori.length; i++ )
+    for (let imag of vImagini){
+        [numeFis, ext]=imag.fisier.split(".");
+        let caleFisAbs=path.join(caleAbs,imag.fisier);
+        let caleFisMediuAbs=path.join(caleAbsMediu, numeFis+".webp");
+        sharp(caleFisAbs).resize(300).toFile(caleFisMediuAbs);
+        imag.fisier_mediu=path.join("/", obGlobal.obImagini.cale_galerie, "mediu",numeFis+".webp" )
+        imag.fisier=path.join("/", obGlobal.obImagini.cale_galerie, imag.fisier )
+        
+    }
+}
+initImagini();
 
 app.listen(8080);//port de ascultare
 console.log("Serverul a pornit");

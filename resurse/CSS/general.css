@@ -256,36 +256,42 @@ a[href^="http"]::before {
 
 
 a[href^="http"]:hover::before {
-  color: red; 
+  color: yellow; 
 }
 
-main a, main p a {
+:root {
+  --link-visited-color: #8200ae; /* Color for visited links */
+  --external-link-hover-color: #000000; /* Color for hover effects */
+  --link-hover-background-color: #87CEFA; /* Color for the hover blob */
+}
+
+/* Basic link styling */
+.special-link {
   position: relative;
-  display: inline-block;}
-
-main a::after, main p a::after {
-  content: '';
-  position: absolute;
-  top: 60%;
-  left: 65%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 50%;
-  background: radial-gradient(circle,var(--accent-color-2) 0%, var(--accent-color-2) 40%, transparent 80%, transparent 100%);
-  background-position: center;
-  background-size: 0;
-  border-radius: 50%;
-  transition: background-size 1s ease-in-out;
-  z-index: -1;
+  text-decoration: none; /* Removes underline */
 }
 
-main a:hover::after, main p a:hover::after {
-  background-size: 100%;
+/* Visited link styling */
+.special-link:visited {
+  color: var(--link-visited-color);
 }
 
-a:active {
-  color: var(--culoare-inchisa);
-  border: 2px solid black; /* Apare un border în jurul linkului */
+/* Hover effect with color blob */
+.special-link:hover {
+  background-image: radial-gradient(ellipse at center, var(--link-hover-background-color) 0%, var(--link-hover-background-color) 40%, transparent 80%, transparent 100%);
+  background-size: 0% 0%; /* Initial size of the oval */
+  transition: background-size 0.5s ease; /* Add transition for smooth animation */
+}
+
+/* Change background size to make the oval grow */
+.special-link:hover {
+  background-size: 100% 100%; /* Final size of the oval */
+}
+
+/* Adding a border on click (:active state) */
+.special-link:active {
+  border: 1px solid var(--external-link-hover-color); /* Adjusting border color to be blue */
+  padding: -1px; /* Adjust padding to compensate for the border thickness without shifting content */
 }
 
 
