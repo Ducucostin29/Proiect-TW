@@ -2,17 +2,33 @@ const express = require("express");//include biblioteca express
 const fs= require('fs');//include biblioteca fs sistemul de fisiere poate sa fac chesti primeasca citeasca etc
 const path=require('path');// se uita la cai
 const sharp=require('sharp');
-// const sass=require('sass');
-// const ejs=require('ejs');
+const sass=require('sass');
+const ejs=require('ejs');
+const Client  = require("pg").Client;
+
+
+var client= new Client({database:"cti_2024",
+        user:"alexandru",
+        password:"alexandru",
+        host:"localhost",
+        port:5432});
+client.connect();
+
+client.query("select * from unnset(enum_range(null::categ_prajituri))",function(err,rez){
+    console.log(rez);
+})
 
 
 
 obGlobal = {
     obErori: null,
-    obImagini: null
+    obImagini: null,
+    folderScss:path.join(__dirname,"resurse/SCSS"),
+    folderCss:path.join(__dirname,"resurse/CSS"),
+    folderBackup:path.join(__dirname,"backup")
 }
 
-vect_foldere = ["temp", "temp1"];
+vect_foldere = ["temp", "temp1", "backup"];
 for (let folder of vect_foldere) {
     let caleFolder = path.join(__dirname, folder)
     if (!fs.existsSync(caleFolder)) {
@@ -28,6 +44,7 @@ console.log("Director de lucru", process.cwd());//Curent working directory , fol
 app.set("view engine","ejs");//motorul de temp
 
 app.use("/resurse", express.static(__dirname+"/resurse"));//fac un alias
+app.use("/node_modules", express.static(__dirname+"/resurse"));//fac un alias
 
 
 //app.get("/",function(req,res){
@@ -61,6 +78,40 @@ app.get("/suma/:a/:b", function(req,res){
 app.get("/favicon.ico", function(req, res){
     res.sendFile(path.join(__dirname, "resurse/favicon/favicon.ico"))
 })
+
+//---------------------Produse------------------//\
+
+app.get("/produse",function(req,res){
+    console.log(req.query)
+    var conditieQuery="";
+    if(req.query.tip){
+        conditieQuery=`where tip_produs='${req.query.tip}'`
+    }
+    client.query("select * from unnset(enum_range(null::categ_prajituri))",function(err,rezOptiune){
+        client.query(`select * from prajituri ${conditieQuery}`,function(err,rez){
+        if(err){
+            console,log(err);
+            afisareEroare(res, 2);
+        }
+        else{
+        res.render("pagini/produse",{produse:rez.rows,optiuni:[]})
+       }
+        })
+    })
+})
+
+app.get("/produs/:id",function(req,res){
+    client.query(`select * from prajituri where id=${req.params.id}`,function(err,rez){
+        if(err){
+            console.log(err);
+            afisareEroare(res, 2);
+        }
+        else{
+        res.render("pagini/produs",{prod:rez.rows[0]})
+    }
+    })
+})
+
 
 app.get("/*.ejs", function (req, res) {
     afisareEroare(res, 400);
@@ -141,6 +192,7 @@ function afisareEroare(res, _identificator, _titlu, _text, _imagine){
 function initImagini(){
     var continut= fs.readFileSync(__dirname+"/resurse/json/galerie.json").toString("utf-8");
 
+
     obGlobal.obImagini=JSON.parse(continut);
     let vImagini=obGlobal.obImagini.imagini;
 
@@ -161,6 +213,55 @@ function initImagini(){
     }
 }
 initImagini();
+
+function compileazaScss(caleScss, caleCss){
+    console.log("cale:",caleCss);
+    if(!caleCss){
+
+        let numeFisExt=path.basename(caleScss);//arata calea de baza
+        let numeFis=numeFisExt.split(".")[0]   /// "a.scss"  -> ["a","scss"]
+        caleCss=numeFis+".css";
+    }
+    
+    if (!path.isAbsolute(caleScss))//daca nu e cale absoluta
+        caleScss=path.join(obGlobal.folderScss,caleScss )//o sa-l concatenez la folderul scss
+    if (!path.isAbsolute(caleCss))//daca nu e cale absoluta
+        caleCss=path.join(obGlobal.folderCss,caleCss )//o sa-l concatenez la folderul css
+    
+
+    let caleBackup=path.join(obGlobal.folderBackup, "resurse/css");//creem calea de backup pt css
+    if (!fs.existsSync(caleBackup)) {//daca nu exista
+        fs.mkdirSync(caleBackup,{recursive:true})//o creem recursive:true=creeaza recursiv folderele
+    }
+    
+    // la acest punct avem cai absolute in caleScss si  caleCss
+    let numeFisCss=path.basename(caleCss);//primea o cale si returna numele fisierului cu tot cu extensia
+    if (fs.existsSync(caleCss)){//daca exista
+        fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, "resurse/css",numeFisCss ))// +(new Date()).getTime()
+    }//il copiez de unde era in backup resurse css
+    rez=sass.compile(caleScss, {"sourceMap":true});//va compila in css 
+    fs.writeFileSync(caleCss,rez.css)//textul care e scris il pune la cale
+    //console.log("Compilare SCSS",rez);
+}
+//compileazaScss("a.scss");
+vFisiere=fs.readdirSync(obGlobal.folderScss);//citeste toate fisierele si le pune intr-un vector
+for( let numeFis of vFisiere ){
+    if (path.extname(numeFis)==".scss"){
+        compileazaScss(numeFis);
+    }
+}
+
+
+fs.watch(obGlobal.folderScss, function(eveniment, numeFis){//verifica daca s-a modificat fisierul
+    console.log(eveniment, numeFis);
+    if (eveniment=="change" || eveniment=="rename"){
+        let caleCompleta=path.join(obGlobal.folderScss, numeFis);//concatem calea numelui de fisier cu cel refacut
+        if (fs.existsSync(caleCompleta)){//exista
+            compileazaScss(caleCompleta);
+        }
+    }
+})
+
 
 app.listen(8080);//port de ascultare
 console.log("Serverul a pornit");

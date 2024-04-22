@@ -1,0 +1,104 @@
+DROP TYPE IF EXISTS categ_echipamente;
+DROP TYPE IF EXISTS categ_produse;
+DROP TYPE IF EXISTS culori;
+
+CREATE TYPE categ_echipamente AS ENUM( 'barbati', 'femei', 'copii','echipamente','accesorii');
+CREATE TYPE categ_produse AS ENUM('schiuri', 'snowboard', 'geci', 'pantaloni', 'bluze', 'polare', 'ghete', 'patine', 'sanii', 'ochelari', 'casti', 'manuși', 'cagule', 'gutiere', 'sosete', 'genti', 'huse', 'rucsacuri', 'caciuli', 'camere');
+CREATE TYPE culori AS ENUM('rosu', 'albastru', 'negru', 'verde', 'galben', 'portocaliu', 'alb', 'gri', 'maro', 'mov', 'roz');
+
+CREATE TABLE IF NOT EXISTS produse_iarna (
+   id SERIAL PRIMARY KEY,
+   nume VARCHAR(100) UNIQUE NOT NULL,
+   descriere TEXT,
+   pret NUMERIC(8,2) NOT NULL,
+   categorie_mare categ_echipamente NOT NULL DEFAULT 'echipamente',
+   categorie_mica categ_produse DEFAULT 'schiuri',
+   masura NUMERIC(3,2),
+   materiale VARCHAR[], -- poate fi dimensiunea, lungimea, etc.
+   culoare culori,
+   garantie BOOLEAN NOT NULL DEFAULT FALSE,
+   posta BOOLEAN NOT NULL DEFAULT TRUE,
+   imagine VARCHAR(300),
+   data_adaugare TIMESTAMP DEFAULT current_timestamp
+);
+
+CREATE USER alexandru WITH ENCRYPTED PASSWORD 'alexandru';
+GRANT ALL PRIVILEGES ON DATABASE cti_2024 TO alexandru ;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO alexandru;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO alexandru;
+
+<section id="galerie-statica" class="image-index">
+        <h2>Galerie statica</h2>
+            <div id="grid-galerie">
+            <figure>
+                <img src="resurse/imagini/galerie/munte1.png" width="400" height="500" alt="Peisaj de munte cu bete de schii">
+                <figcaption>Peisaj de munte cu bete de schii</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/munte2.png" width="400" height="500" alt="Peisaj cu munti">
+                <figcaption>Peisaj cu munti</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/munte3.png" width="400" height="500" alt="Schiuri rosi si bete verzi">
+                <figcaption>Schiuri rosi si bete verzi</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/munte4.png" width="400" height="500" alt="Platou in varful unui munte">
+                <figcaption>Platou in varful unui munte</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/munte5.png" width="400" height="500" alt="Dimineata pe schiuri">
+                <figcaption>Dimineata pe schiuri</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/munte6.png" width="400" height="500" alt="Drum lin">
+                <figcaption>Drum lin</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/telescaun1.png" width="400" height="500" alt="Telescaun">
+                <figcaption>Telescaun</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/telescaun2.png" width="400" height="500" alt="Telescaun cu partii">
+                <figcaption>Telescaun cu partii</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/schi1.png" width="400" height="500" alt="Schiuri rosii">
+                <figcaption>Schiuri rosii</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/gondola1.png" width="400" height="500" alt="Gondola plina de schiuri">
+                <figcaption>Gondola plina de schiuri</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/snowboard1.png" width="400" height="500" alt="Snowboard verde">
+                <figcaption>Snowboard verde</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/gondola2.png" width="400" height="500" alt="Gondola in urcare">
+                <figcaption>Gondola in urcare</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/mosu1.png" width="400" height="500" alt="Mos Craciun pe schiuri">
+                <figcaption>Mos Craciun pe schiuri</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/schi2.png" width="400" height="500" alt="Trei perechi de schiuri">
+                <figcaption>Trei perechi de schiuri</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/schi3.png" width="400" height="500" alt="Schior profesionist">
+                <figcaption>Schior profesionist</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/statiune1.png" width="400" height="500" alt="Noaptea intr-o statiune">
+                <figcaption>Noaptea intr-o statiune</figcaption>
+            </figure>
+            <figure>
+                <img src="resurse/imagini/galerie/dog_azorel.png" width="400" height="500" alt="Azorel cu ochelari">
+                <figcaption>Azorel cu ochelari</figcaption>
+            </figure>
+            
+        </div>
+    </section>
+

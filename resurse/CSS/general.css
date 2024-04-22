@@ -290,9 +290,11 @@ a[href^="http"]:hover::before {
 
 /* Adding a border on click (:active state) */
 .special-link:active {
-  border: 1px solid var(--external-link-hover-color); /* Adjusting border color to be blue */
+  border: 2px solid var(--external-link-hover-color); /* Adjusting border color to be blue */
   padding: -1px; /* Adjust padding to compensate for the border thickness without shifting content */
 }
+
+
 
 
 

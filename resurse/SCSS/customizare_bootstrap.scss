@@ -1,0 +1,18 @@
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' with
+
+// Definim propriile variabile personalizate
+(
+$primary: #2596BE,
+$secondary: #00E0D5,
+$border-color:#65D5EB,
+$body-color: black,
+$link-color: #ffcc00,
+$font-family-base: "Love Ya Like A Sister",
+$border-radius: 10px,
+$h1-font-size: 36px,
+$h2-font-size: 30px,
+$h3-font-size: 24px,
+$h4-font-size: 18px,
+$h5-font-size: 16px,
+$h6-font-size: 14px,
+)

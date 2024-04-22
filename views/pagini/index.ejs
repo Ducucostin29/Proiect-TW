@@ -17,6 +17,7 @@
         <div id="grid-pagina">
             <section id="welcome">
                 <h2>Bine ati venit!</h2>
+                <button type="button" class="btn btn-primary btn-lg">Stil-1-mare</button>
                 <p>Ip: <%- locals.ip %></p>
                     <p>
                         <a href="https://ro.wikipedia.org/wiki/Schi" target="_blank">Skiwiki</a>
@@ -37,14 +38,93 @@
                 </figure>
             </section>
             <section id="tabel">
-                <h2>Tabelul va fi inserat</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Proin commodo, arcu in mollis ullamcorper, tortor elit pulvinar dui, at vehicula mauris felis laoreet mauris. Nunc vulputate risus ex.</p>
+                <table id="tab-orar">
+                    <thead>
+        
+                        <tr>
+                            <th><b>Cod</b></th>
+                            <th><b>Perioadă</b></th>
+                            <th><b>Zi</b></th>
+                            <th><b>Interval dimineata</b></th>
+                            <th><b>Pauza de masa</b></th>
+                            <th><b>Interval seară</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td rowspan="5">Zile<br/>Lucrătoare</td>
+                            <td>Luni</td>
+                            <td>8-14</td>
+                            <td>14-15</td>
+                            <td>15-18</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            
+                            <td>Marti</td>
+                            <td>8-14</td>
+                            <td>14-15</td>
+                            <td>15-18</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            
+                            <td>Miercuri</td>
+                            <td>8-14</td>
+                            <td>14-15</td>
+                            <td>15-18</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            
+                            <td>Joi</td>
+                            <td>8-14</td>
+                            <td>14-15</td>
+                            <td>15-18</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            
+                            <td>Vineri</td>
+                            <td>8-14</td>
+                            <td>14-15</td>
+                            <td>15-18</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td rowspan="2">Weekend</td>
+                            <td>Sambata</td>
+                            <td>10-12</td>
+                            <td>12-13</td>
+                            <td>13-16</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Duminica</td>
+                            <td>inchis</td>
+                            <td>inchis</td>
+                            <td>inchis</td>
+                        </tr>
+                    </tbody>
+                    <tfoot><tr><td colspan="6">In perioada sarbatorilor legale inchis!</td></tr></tfoot>
+                </table>
             </section>
             <section id="evenimente">
                 <h2>Viitoare evenimente vor fi adaugate aici</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Proin commodo, arcu in mollis ullamcorper, tortor elit pulvinar dui, at vehicula mauris felis laoreet mauris. Nunc vulputate risus ex.</p>
             </section>
+
             <section id="anunturi">
+                <div id="container-text">
+                    <div id="text">
+                        <h2>Oferte!!!</h2>
+                    </div>
+                    <div id="text-reflectat">
+                        <h2>Oferte!!!</h2>
+                    </div>
+                </div>
+
                 <div class="intro-tabel"><div>Casca schi reducere</div><div>snowboard placa reducere</div><div>bete leki la super oferta</div></div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Proin commodo, arcu in mollis ullamcorper, tortor elit pulvinar dui, at vehicula mauris felis laoreet mauris. Nunc vulputate risus ex.</p>
             </section>
@@ -121,6 +201,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Proin commodo, arcu in mollis ullamcorper, tortor elit pulvinar dui, at vehicula mauris felis laoreet mauris. Nunc vulputate risus ex.</p>
             </section>
         </div>
+
         <section id="Produse">
             <h2>Produsele noastre sunt:</h2>
 
@@ -136,14 +217,14 @@
                     <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/SUy9lRGm_XM?si=Lf38whpIGP_UtHA2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
         </section>
+        
 
-        <section id="Servicii">
-            <h2>Servicile noastre sunt:</h2>
+        <div class="reflexie-container">
+            <h2 class="reflexie-text" id="reflexie">Servicile noastre sunt:</h2>
             <p>
-
+    
             </p>
-
-        </section>
+        </div>
 
         <section id="Cursuri si tabere de iarna">
             <h2>Taberele noastre de iarna sunt:</h2>
@@ -175,79 +256,12 @@
             <track src="resurse/videoclipuri/subtitrari_eng.vtt" kind="subtitles" srclang="en" label="English">
             Your browser does not support the video tag.
         </video>
+        
+        <div class="duotone-image-container">
+            <img src="./resurse/favicon/Imagine ski.jpg" width="400" height="500" alt="Imagine">
+          </div>
+        
 
-        <table id="tab-orar">
-            <thead>
-
-                <tr>
-                    <th><b>Cod</b></th>
-                    <th><b>Perioadă</b></th>
-                    <th><b>Zi</b></th>
-                    <th><b>Interval dimineata</b></th>
-                    <th><b>Pauza de masa</b></th>
-                    <th><b>Interval seară</b></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td rowspan="5">Zile<br/>Lucrătoare</td>
-                    <td>Luni</td>
-                    <td>8-14</td>
-                    <td>14-15</td>
-                    <td>15-18</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    
-                    <td>Marti</td>
-                    <td>8-14</td>
-                    <td>14-15</td>
-                    <td>15-18</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    
-                    <td>Miercuri</td>
-                    <td>8-14</td>
-                    <td>14-15</td>
-                    <td>15-18</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    
-                    <td>Joi</td>
-                    <td>8-14</td>
-                    <td>14-15</td>
-                    <td>15-18</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    
-                    <td>Vineri</td>
-                    <td>8-14</td>
-                    <td>14-15</td>
-                    <td>15-18</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td rowspan="2">Weekend</td>
-                    <td>Sambata</td>
-                    <td>10-12</td>
-                    <td>12-13</td>
-                    <td>13-16</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>Duminica</td>
-                    <td>inchis</td>
-                    <td>inchis</td>
-                    <td>inchis</td>
-                </tr>
-            </tbody>
-            <tfoot><tr><td colspan="6">In perioada sarbatorilor legale inchis!</td></tr></tfoot>
-        </table> 
-    
 
         <a href="http://google.com" target="_blank"
         class="special-link">google</a>
@@ -258,17 +272,34 @@
         <a href="https://www.instagram.com/" target="_blank"
         class="special-link">instagram</a></a>
 
-        <section id="galerie-statica">
-            <h2>Galerie</h2>
-            <div id="grid-galerie">
-                <% for (let imag of locals.imagini){ %>
-                    <figure>
-                        <img src="<%= imag.fisier %>" alt="briose">
-                        <figcaption><%= imag.descriere %></figcaption>
-                    </figure>
-                <%} %>
-            </div>
-        </section>
+
+        
+        <section id="galerie-statica" class="image-index">            
+            <h2>Galerie</h2>            
+            <div id="grid-galerie">                
+                <%                     
+                    var vOre = [[0,1],[2,3],[4,5],[6,7],[8,9],[10,11],[12,13],[14,15],[16,17],[18,19],[20,21],[22,23],[23,24]];                    
+                    var d = new Date();                    
+                    var oraCurenta = d.getHours();
+
+                    for (let imag of locals.imagini) {                         
+                        for (let interval of vOre) {
+                            if (oraCurenta >= interval[0] && oraCurenta <= interval[1]) {                        
+                                 %>                            
+                                <figure>
+                                    <picture>                                    
+                                        <source srcset="<%= imag.fisier_mediu %>" media="(max-width:1200px)"/> 
+                                        <source srcset="<%= imag.fisier_mic %>" media="(max-width:700px)"/>                                   
+                                        <img src="<%= imag.fisier %>" alt="imagini">                                
+                                    </picture>                                                        
+                                    <figcaption><%= imag.descriere_imag %></figcaption>                            
+                                </figure>                    
+                        <% } %>                
+                     <% } %>                        
+                    <% } %>                        
+                </div>       
+         </section>
+
 
     </main>
 

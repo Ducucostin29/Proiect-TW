@@ -1,0 +1,143 @@
+html{
+    font-size: 18px;
+    font-family: "Love Ya Like A Sister", cursive;
+    font-weight: 400;
+    font-style: normal;
+
+    --culoare-fundal:#65D5EB;
+    --dim-spatiere:50px;
+    padding-left: var(--dim-spatiere);
+    padding-right: var(--dim-spatiere);
+    --primary-color:#2596BE;
+    --complementary-color-1:#00E0D5;
+    --complementary-color-2:#00E03C;
+    --accent-color-1:#005EE0;
+    --accent-color-2:#4BE0D8;
+    --accent-color-3:#00E088;
+    
+}
+  
+  #grid-galerie figure {
+    flex: 0 1 calc(33.333% - 20px); /* Ajustează această valoare în funcție de numărul de imagini pe rând și de spațiul dorit între ele */
+    margin-bottom: 20px; /* Spațiu între rânduri */
+    box-sizing: border-box;
+  }
+  
+  #grid-galerie figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+#grid-galerie {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 700px) {
+    #grid-galerie {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #grid-galerie {
+        grid-template-columns: block;
+    }
+}
+
+#grid-galerie {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #grid-galerie figure {
+    margin: 10px;
+    position: relative;
+  }
+  
+  #grid-galerie figcaption {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #333; /* culoare inițială a textului */
+    transition: color 1.2s; /* tranziție pentru culoarea textului */
+  }
+  
+  #grid-galerie img {
+    filter: brightness(50%); /* strălucire inițială */
+    transition: filter 1.2s; /* tranziție pentru strălucire */
+  }
+  
+  #grid-galerie figure:hover figcaption {
+    color: #ff5733; /* culoare text la hover */
+  }
+  
+  #grid-galerie figure:hover img {
+    filter: brightness(100%); /* strălucire la hover */
+  }
+
+  #grid-galerie>figure:nth-child(1){
+    grid-area: 1/2/1/3;
+  }
+
+  #grid-galerie>figure:nth-child(2){
+    grid-area: 1/3/1/4;
+  }
+
+  #grid-galerie>figure:nth-child(3){
+    grid-area: 2/1/2/2;
+  }
+
+  #grid-galerie>figure:nth-child(4){
+    grid-area: 2/3/2/4;
+  }
+
+  #grid-galerie>figure:nth-child(5){
+    grid-area: 3/1/3/2;
+  }
+
+  #grid-galerie>figure:nth-child(6){
+    grid-area: 3/2/3/3;
+  }
+
+  #grid-galerie>figure:nth-child(7){
+    grid-area: 4/1/4/2;
+  }
+
+  #grid-galerie>figure:nth-child(8){
+    grid-area: 4/3/4/4;
+  }
+
+  #grid-galerie>figure:nth-child(9){
+    grid-area: 5/2/5/3;
+  }
+
+  #grid-galerie>figure:nth-child(10){
+    grid-area: 5/3/5/4;
+  }
+
+  #grid-galerie>figure:nth-child(11){
+    grid-area: 6/1/6/2;
+  }
+
+  #grid-galerie>figure:nth-child(12){
+    grid-area: 6/3/6/4;
+  }
+
+  #grid-galerie>figure:nth-child(13){
+    grid-area: 7/1/7/2;
+  }
+
+  #grid-galerie>figure:nth-child(14){
+    grid-area: 7/2/7/3;
+  }
+
+  

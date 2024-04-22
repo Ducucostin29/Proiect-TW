@@ -81,7 +81,7 @@ html{
     }
 
     #grid-pagina{
-        grid-template-columns: repeat(3,1fr); /* 1fr 1fr 1fr 1fr ;*/
+        grid-template-columns: repeat(3,1fr); /* 1fr 1fr 1fr ;*/
         grid-template-areas: "welcome welcome welcome"
                             "welcome welcome welcome"
                             "evenimente tabel anunturi"
@@ -113,3 +113,156 @@ html{
     -webkit-background-clip: text; 
     background-clip: text; 
 }
+
+#separator {
+  height: 20px; /* Înălțimea hr-ului */
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: 
+      linear-gradient(to right, red 35%, red 65%, transparent),
+      linear-gradient(to right, limegreen 35%, limegreen 65%,transparent),
+      linear-gradient(to right, blue 35%, blue 65%,transparent);
+  background-size: 3% 33.33%; /* Ajustează dimensiunea fiecărui gradient pentru a ocupa o treime din înălțimea hr-ului */
+  background-repeat: repeat-X;
+  background-position: 0 0,35% 33.33%, 0 66.67%; /* Plasarea fiecărui gradient pe verticală */
+}
+
+.duotone-image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .duotone-image-container::before,
+  .duotone-image-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .duotone-image-container::before {
+    background-color: blue; /* culoarea 1 */
+    mix-blend-mode: screen;
+    transform: translateX(100%); /* Inițial ascuns spre dreapta */
+  }
+  
+  .duotone-image-container::after {
+    background-color: red; /* culoarea 2 */
+    mix-blend-mode: screen;
+    transform: translateX(-100%); /* Inițial ascuns spre stânga */
+  }
+  
+  .duotone-image-container:hover::before {
+    animation: revealDuotoneFromRight 1s forwards;
+  }
+  
+  .duotone-image-container:hover::after {
+    animation: revealDuotoneFromLeft 1s forwards;
+  }
+  
+  .duotone-image-container:not(:hover)::before {
+    animation: hideDuotoneToRight 1s forwards;
+  }
+  
+  .duotone-image-container:not(:hover)::after {
+    animation: hideDuotoneToLeft 1s forwards;
+  }
+  
+  @keyframes revealDuotoneFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes revealDuotoneFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes hideDuotoneToRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  @keyframes hideDuotoneToLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+
+  #anunturi {
+    display: flex; /* Utilizează flexbox pentru a organiza elementele copil într-un container flexibil. */
+    flex-wrap: wrap; /* Specifică modul în care elementele copil trebuie să fie plasate pe mai multe linii în containerul flexibil atunci când nu încap pe o singură linie. */
+}
+
+#container-text {
+    display: flex; /* Utilizează flexbox pentru a organiza elementele copil într-un container flexibil. */
+    align-items: baseline; /* Aliniază elementele copil la baza liniei de bază a primului element în container. */
+    margin-bottom: 25px; /* Adaugă un spațiu de 25 de pixeli în partea de jos a containerului. */
+    margin-top: 15px; /* Adaugă un spațiu de 15 pixeli în partea de sus a containerului. */
+}
+
+#text-reflectat {
+    position: relative; /* Poziționează elementul relativ față de poziția sa normală. */
+    left: 0; /* Fixează elementul la poziția sa normală pe axa orizontală. */
+    top: 100%; /* Fixează elementul la partea de jos a containerului său părinte. */
+    transform-origin: top; /* Specifică punctul în jurul căruia se face transformarea. */
+    transform: rotateY(180deg) skew(20deg, -25deg) translate(10px, -54px); /* Aplică o transformare care include o rotație pe axa Y, o înclinare și o translație. */
+    margin-left: 45px; /* Adaugă un spațiu de 45 de pixeli la stânga elementului. */
+}
+
+#text {
+    position: relative; /* Poziționează elementul relativ față de poziția sa normală. */
+    transform: skew(20deg, -25deg); /* Incline elementul cu un unghi dat pe axele X și Y. */
+}
+
+#text, #text-reflectat {
+    font-size: 50px; /* Stabilește mărimea fontului la 50 de pixeli. */
+    line-height: 50px; /* Stabilește înălțimea liniei la 50 de pixeli. */
+    font-weight: bold; /* Stabilește grosimea fontului la bold. */
+    white-space: normal; /* Specifică modul în care spațiile albe sunt tratate în interiorul elementului. */
+    color: black; /* Stabilește culoarea textului la negru. */
+    transition: color 1.5s ease; /* Specifică o tranziție a proprietății de culoare a textului cu o durată de 1.5 secunde și un efect de tranziție ușor. */
+}
+
+#container-text:hover #text,
+#container-text:hover #text-reflectat {
+    color: red; /* Schimbă culoarea textului la roșu când cursorul este plasat pe containerul textului. */
+}
+
+#anunturi p {
+    white-space: normal; /* Specifică modul în care spațiile albe sunt tratate în interiorul elementelor <p> din containerul #anunturi. */
+}
+
+.image-index {
+  counter-reset: image-counter;
+}
+
+figcaption::before {
+  counter-increment: image-counter;
+  content: counter(image-counter, decimal-leading-zero);
+  /* Stilizare pentru indexul imaginilor */
+  font-weight: bold;
+  margin-right: 0.3em; /* Separare între index și text */
+}
+  
+  
+  
