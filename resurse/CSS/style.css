@@ -19,7 +19,7 @@ h1 {
   border: 5px solid var(--primary-color);
   margin-left: auto;
   margin-right: auto;
-  box-shadow: var(--accent-color-1); /* Corectat numele variabilei */
+  box-shadow: var(--accent-color-1);
   text-align: center;
 }
 

@@ -17,6 +17,41 @@ body{
   padding-right:var(--spatiere);
 }
 
+:root {
+  --culoare-fundal: #65D5EB;
+  --primary-color: #2596BE;
+  --complementary-color-1: #00E0D5;
+  --complementary-color-2: #00E03C;
+  --accent-color-1: #005EE0;
+  --accent-color-2: #4BE0D8;
+  --accent-color-3: #00E088;
+  --background-image: url('/resurse/imagini/background-image-snowboard.jpg');
+  --text-color: black;
+  --culoare-deschisa:#00E0D5;
+  --culoare-inchisa: #005EE0;
+}
+
+
+body{
+  background-image: var(--background-image);
+  background-attachment: fixed;
+  background-size: cover;
+  color: var(--text-color);
+}
+
+body.dark {
+  --primary-color: #070448;
+  --complementary-color-1: #005BBB;
+  --complementary-color-2: #4d4231;
+  --accent-color-1: #2b1a02;
+  --accent-color-2: #4BE0D8;
+  --accent-color-3: #2b1a02;
+  --background-image: url('/resurse/imagini/background-dark.jpg');
+  --text-color: white;
+  --culoare-inchisa: #070448;
+  --culoare-deschisa: #005BBB;;
+}
+
 
 #link-top{
     position:fixed;
@@ -80,11 +115,11 @@ body{
   }
   
   tbody tr:nth-child(even) {
-    background-color: aqua;
+    background-color: var(--culoare-deschisa);
   }
   
   tbody tr:nth-child(odd) {
-    background-color: limegreen;
+    background-color: var(--accent-color-3);
   }
   
   tbody tr:hover {
@@ -137,7 +172,7 @@ body{
   font-size: 10px;
   box-sizing: border-box;
   page-break-before: always;
-  background-color: white;
+  background-color: none;
 }
 
 @media print {
@@ -161,6 +196,7 @@ body{
 
   h1 {
     text-align: center;
+    background-color: var(--accent-color-2);
   }
 
   /* Stilizarea meniului */

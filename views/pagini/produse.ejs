@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html  lang="ro">
     <head>
-        <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
-        <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
+        <meta name="description" content="Magazinul Solstice, magazinul unde te bucuri de o gama larga de produse si servicii.Viziteaza-ne chiar acum.">
+        <meta name="keywords" content="schiuri, iarna, snowboard, echipament, clapari, bete, casca, boti, manusi, cagula, căciula, șosete, bluze termice, locație, transport, geaca, polar, articole, review, patine, sanie, ski, tabere, cursuri, second-hand, gutiera, huse, genti, rucsac, camere, zăpadă, sport, oferta, reduceri, pantaloni, ghete, adidasi">
         <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
-        <title>Cofetăria Dulcelind - home</title>
+        <title>Solstice</title>
         <%- include("../fragmente/head") %>     
         <script type="text/javascript" src=/resurse/js/produse.js></script>
 
@@ -13,43 +13,115 @@
     <%- include("../fragmente/header") %>
 
     <main>
-        <label> Nume: <input type="text" id="inp-nume"></label>
-        <!--<label> Maxim calorii: <input type="number" id="inp-calorii" value="10000"></label>-->
-        <div> Calorii:<!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
-            <p><label>Dietetic (calorii &lt; 350)
-                <input id="i_rad1"  name="gr_rad" value="0:350" type="radio"/>
-            </label></p>
-            <p><label>Mediu (350 &le; calorii &lt; 700)
-                <input id="i_rad2"  name="gr_rad" value="350:700" type="radio"/>
-            </label>
-            <p><label>Ridicat caloric (700 &le; calorii)
-                <input id="i_rad3" name="gr_rad" value="700:1000000000" type="radio"/>
-            </label>
-            <p><label>Toate
-                <input id="i_rad4" checked name="gr_rad" value="toate" type="radio"/>
-            </label>
+        <div class="container">
+            <div class="row">
+                <label> Nume (se poate folosi "*"): <input type="text" id="inp-nume"></label>
+                <!--<label> Maxim calorii: <input type="number" id="inp-calorii" value="10000"></label>-->
+            </div>   
+            
+            <div class="row"> Masura_dumneavoastra:<!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
+                <p><label>Piticot (masura &lt; 120)
+                    <input id="i_rad1"  name="gr_rad" value="0:120" type="radio"/>
+                </label></p>
+                <p><label>Mediu (120 &le; masura &lt; 170)
+                    <input id="i_rad2"  name="gr_rad" value="120:170" type="radio"/>
+                </label>
+                <p><label>Inalt (170 &le; masura)
+                    <input id="i_rad3" name="gr_rad" value="170:250" type="radio"/>
+                </label>
+                <p><label>Toate
+                    <input id="i_rad4" checked name="gr_rad" value="toate" type="radio"/>
+                </label>
+            </div>
+        <div class="row">
+            <label> Pret minim:<span id="infoRangeMin">(0)</span>
+                <input type="range" id="inp-pret-min" class="form-range" value="0" min="0"  max="1000"> </label>
+            <label> Pret maxim:<span id="infoRangeMax">(1000)</span>
+                <input type="range" id="inp-pret-max" class="form-range" value="1000" min="0"  max="1000"> </label>
         </div>
 
+        <div class="row">
+            <p>
+                <label>Alege tipul:
+                    <select id="inp-categorie">
+                        <option id="sel-toate" selected value="toate">toate</option>
+                        <% for (let opt of locals.optiuni) { //verificare ce local este%>
+                            <option value="<%- opt.unnest %>"><%- opt.unnest %> </option>
+                        <% } %>
+                    </select>
+                </label>
+            </p>
+        </div>
 
-        <label> Pret minim: <input type="range" id="inp-pret" value="0" min="0"  max="70"> <span id="infoRange">(0)</span></label>
-        <label>Select simplu:
-            <select id="inp-categorie">
-                <option id="sel-toate" selected value="toate">toate</option>
-                <% for (let opt of locals.optiuni) { %>
-                    <option value="<%- opt.unnest %>"><%- opt.unnest %> </option>
-                <% } %>
-            </select>
-        </label>
-        <p>
-        <button id="filtrare">Filtreaza</button> 
+        <div class="row">
+            <p>
+                <label for="garan" class="btn btn-secondary btn-outline-primary">Garantie
+                <input id="garan" class="btn-check" name="gr_che" type="checkbox" autocomplete="off" checked/>
+            </label><br>
+            <label for="no_garan" class="btn btn-secondary btn-outline-primary">Nu are Garantie
+                <input id="no_garan" class="btn-check" name="gr_che" type="checkbox" autocomplete="off" checked/>
+            </label></p>
+        </div>
 
-        <button id="resetare">Reseteaza</button><br/>
-        <button id="sortCrescNume">Sorteaza crescator dupa pret si nume</button>
-        <button id="sortDescrescNume">Sorteaza descrescator dupa pret si nume</button>
+        <div class="row">
+            <p>
+                <label for="categorie">Alege categoria:</label>
+                <input list="browser-stil" name="browse-stil" id="browse-stil" selected value="Toate">
+                    <datalist id="browser-stil">
+                        <option value="Barbati">Barbati</option>
+                        <option value="Femei">Femei</option>
+                        <option value="Copii">Copii</option>
+                    </datalist>
+            </p>
+        </div>
+
+        <div class="row">
+            <p>
+                <label for="tip-echipament">Alege echipamentul:</label>
+                <select name="tip-camera" id="tip-camera"  multiple>
+                    <option value="schiuri">Schiuri</option>
+                    <option value="geci">Geci</option>
+                    <option value="pantaloni">Pantaloni</option>
+                    <option value="polare">Polare</option>
+                    <option value="ghete">Ghete</option>
+                    <option value="ochelari">Ochelari</option>
+                    <option value="casti">Casti</option>
+                    <option value="manusi">Manusi</option>
+                    <option value="cagule">Cagule</option>
+                    <option value="sosete">Sosete</option>
+                    <option value="clapari">Clapari</option>
+                    <option value="caciuli">Caciuli</option>
+                    <option value="snowboard">Snowboard</option>
+                    <option value="patine">Patine</option>
+                    <option value="gutiere">Gutiere</option>
+                    <option value="general">General</option>
+                </select>
+                <br><br>
+            </p>
+        </div>
+        <div class="row form-floating">
+            <textarea id="materiale" class="form-control" name="materiale" style="height: 100px" placeholder="Materiale"></textarea>
+            <label for="materiale" id="lab-mat" >Introdu materialele cautate separate prin virgula:</label>
+        </div>
+
         
-        </p>
+
+        <div class="row">
+            <p>
+            <button id="filtrare" class="btn btn-primary btn-lg">
+                <span class="glyphicon glyphicon-filter d-inline-block d-sm-none" aria-hidden="true"><i class="bi bi-filter"></i><i class="fa-solid fa-filter"></i></span> <!-- Font awasom merge dar bootstrap nu ? -->
+                <span class="d-none d-sm-inline-block">Filtrare</span> 
+            </button> 
+            <button id="resetare" class="btn btn-primary btn-lg">Reseteaza</button><br/>
+            <button id="sortCrescNume" class="btn btn-primary btn-lg">Sorteaza crescator dupa lungimea descrierii si nume</button>
+            <button id="sortDescrescNume" class="btn btn-primary btn-lg">Sorteaza descrescator dupa lungimea descrierii si nume</button>
+            </p>
+        </div>
+            
         
-        <p id="p-suma">Apăsați Alt+"c" pentru suma preturilor produselor afișate. </p>
+        <div class="row">
+            <p id="p-suma"><button id="b-suma" class="btn general">Apăsați pentru suma preturilor produselor afișate. </button></p>
+        </div>
         <section id="produse">
             <h2>Produse</h2>
             <div class="grid-produse">
@@ -58,13 +130,76 @@
                         <h3 class="nume">Nume: <a href="/produs/<%-prod.id %>" ><span class="val-nume"><%- prod.nume%></span></a></h3>
                         <div class="info-prod">
                             <p class="pret">Pret: <span class="val-pret"><%- prod.pret%></span></p>
-                            <p class="calorii">Calorii: <span class="val-calorii"><%- prod.calorii%></span></p>
-                            <p class="gramaj">Gramaj: <span class="val-gramaj"><%- prod.gramaj%></span></p>
+                            <p class="masura">Masura: <span class="val-masura"><%- prod.masura%></span></p>
                         </div>
-                        <p class="categorie">Categorie:<span class="val-categorie"><%- prod.categorie%></span></p>
-                        <figure>
-                            <a href="/produs/<%-prod.id %>" ><img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- prod.nume %>]" /></a>
-                        </figure>
+                        <p class="categorie_mare">Categorie mare:<span class="val-categorie-mare"><%- prod.categorie_mare%></span></p>
+                        <p class="categorie_mica">Categorie mica:<span class="val-categorie-mica"><%- prod.categorie_mica%></span></p>
+                        <p class="descriere">descriere: <span class="val-descriere"><%- prod.descriere%></span></p>
+
+                        <div class="info-prod">
+                            <div class="info-val">
+                                <details>
+                                    <summary>Detalii</summary>
+                            <table class="tab-prod">
+                                <thead>
+        
+                                    <tr>
+                                        <th>Proprietate</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+    
+                                        <td>Pret:</td>
+                                        <td><span class="val-pret"><%- prod.pret%></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Categorie:</td>
+                                        <td><span class="val-categorie"><%- prod.categorie%></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Data:</td>
+                                        <%function DateFunc(dateString){
+                                            const months = [
+                                                "nuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie",
+                                                "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"];
+                                            const daysOfWeek = [
+                                                "duminica","luni", "marti", "miercuri", "joi", "vineri", "sambata"];
+                                            const date = new Date(dateString);
+                                            const day = date.getDate();
+                                            const month = months[date.getMonth()];
+                                            const year = date.getFullYear();
+                                            const dayOfWeek = daysOfWeek[date.getDay()];
+                                            //document.getElementsByClassName("val-data").innerHTML=`${day}/${month}/${year} (${dayOfWeek})`;
+                                            return ` (${dayOfWeek}) ${day}-${month}-${year} `;
+                                        } %>
+                                        <td><time class="val-data" datetime="<%=
+                                            prod.data_adaugare%>" onbeforeprint="DateFunc()"><%=DateFunc(prod.data_adaugare) %></time></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Materiale:</td>
+                                        <td><span class="val-materiale"><%- prod.materiale%></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Garantie:</td>
+                                        <td> <span class="val-garantie"><%- prod.garantie ? 'DA' : 'NU'%></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                               
+                                <!--<p class="pret">Pret: <span class="val-pret"><%- prod.pret%></span></p>
+                                <p class="stil">Stil: <span class="val-categorie"><%- prod.categorie%></span></p>
+                                <p class="data">Data: </p>
+                                <p class="materiale">Materiale: <span class="val-materiale"><%- prod.materiale%></span></p>
+                                <p class="asamblare">Asamblare: <span class="val-garantie"><%- prod.garantie ? 'DA' : 'NU'%></span></p>-->
+                                </details>
+                            </div>
+                        <div class="img-prod">
+                            <figure class="poz-prod">
+                               <a href="/produs/<%-prod.id %>" ><img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- prod.nume %>]" /></a>
+                            </figure>
+                        </div>
                         <label class="selecteaza-cos">
                             Selectează:<br/>
                             <input type="checkbox" class="select-cos" value="<%-prod.id %>" autocomplete="off">

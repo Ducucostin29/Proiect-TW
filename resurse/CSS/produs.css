@@ -1,3 +1,22 @@
+body{
+    --culoare1:#2596BE;
+    --culoare-inchisa: #005EE0;
+    --culoare-deschisa:#00E0D5;
+    --culoare-text:black;
+    --culoare-text-selectat:white;
+  
+    --primary-color:#2596BE;
+    --complementary-color-1:#00E0D5;
+    --complementary-color-2:#00E03C;
+    --accent-color-1:#005EE0;
+    --accent-color-2:#4BE0D8;
+    --accent-color-3:#00E088;
+  
+    --spatiere:100px;
+    padding-left:var(--spatiere);
+    padding-right:var(--spatiere);
+  }
+
 h2{
     padding:0.4rem;
 }
@@ -5,7 +24,7 @@ h2{
     margin:0 auto;
     width:70%;
     max-width:700px;
-    background-color: var(--cl-light-t);
+    background-color: var(--accent-color-3);
     box-shadow: 0px 0px 10px 5px grey;
     padding:0.4rem;
 }
@@ -21,10 +40,10 @@ h2{
     font-weight: normal;
 }
 #art-produs p:nth-of-type(even){
-    background-color: var(--culoare-roz-inchis);
+    background-color: var(--complementary-color-2);
 }
 #art-produs p:nth-of-type(odd){
-    background-color: var(--cl-marcare);
+    background-color: var(--accent-color-3);
 }
 .imag-produs{
     text-align: center;

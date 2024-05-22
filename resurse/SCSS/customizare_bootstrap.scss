@@ -4,10 +4,10 @@
 (
 $primary: #2596BE,
 $secondary: #00E0D5,
+$font-family-base: "Love Ya Like A Sister",
 $border-color:#65D5EB,
 $body-color: black,
 $link-color: #ffcc00,
-$font-family-base: "Love Ya Like A Sister",
 $border-radius: 10px,
 $h1-font-size: 36px,
 $h2-font-size: 30px,
@@ -15,4 +15,43 @@ $h3-font-size: 24px,
 $h4-font-size: 18px,
 $h5-font-size: 16px,
 $h6-font-size: 14px,
-)
+$container-max-widths: (
+    md: 1200px,
+    lg: 2400px,
+),
+$border-width: 4px,
+$border-color-translucent: #2297F0,
+$form-range-track-bg: #B08545,
+$font-size-base: 1rem,
+$form-range-thumb-width:1.5 * 1rem
+);
+
+$border-width: 2px; 
+$border-radius: 20px;
+$primary2:  #2596BE;
+$secondary: #00E088;
+
+#filtrare, #resetare{
+    background-color: $primary2;
+}
+
+#sortCrescNume, #sortDescrescNume, #b-suma {
+    background-color: $secondary;
+}
+
+.bi {
+    flex-shrink: 5;
+    display: block;
+    color:red;
+}
+
+.btn{
+    border: $border-width solid transparent;
+    border-radius: $border-radius;
+}
+
+.row {
+    border: 1px block grey;
+}
+
+

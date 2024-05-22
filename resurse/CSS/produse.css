@@ -1,3 +1,38 @@
+:root {
+    --culoare-fundal: #65D5EB;
+    --primary-color: #2596BE;
+    --complementary-color-1: #00E0D5;
+    --complementary-color-2: #00E03C;
+    --accent-color-1: #005EE0;
+    --accent-color-2: #4BE0D8;
+    --accent-color-3: #00E088;
+    --background-image: url('/resurse/imagini/background-image-snowboard.jpg');
+    --text-color: black;
+    --culoare-deschisa:#00E0D5;
+    --culoare-inchisa: #005EE0;
+  }
+  
+  
+  body{
+    background-image: var(--background-image);
+    background-attachment: fixed;
+    background-size: cover;
+    color: var(--text-color);
+  }
+  
+  body.dark {
+    --primary-color: #070448;
+    --complementary-color-1: #005BBB;
+    --complementary-color-2: #4d4231;
+    --accent-color-1: #2b1a02;
+    --accent-color-2: #4BE0D8;
+    --accent-color-3: #2b1a02;
+    --background-image: url('/resurse/imagini/background-dark.jpg');
+    --text-color: white;
+    --culoare-inchisa: #070448;
+    --culoare-deschisa: #005BBB;;
+  }
+
 main{
     --padd-main:1rem;
     padding-left:var(--padd-main);
@@ -16,7 +51,7 @@ main{
 }
 
 .grid-produse .produs h3{
-    background-color: var(--culoare-roz-inchis);
+    background-color: var(--culoare-deschisa);
     text-align: center;
     margin-top: 0;
     padding-top: 0.5rem;
@@ -37,7 +72,7 @@ main{
 }
 .grid-produse .produs .info-prod{
     display:flex;
-    background-color: var(--cl-marcare);
+    background-color: var(--accent-color-3);
 }
 .grid-produse .produs .info-prod p{
     width:30%;
@@ -52,7 +87,7 @@ main{
 }
 
 .info-produse{
-    background-color: var(--cl-marcare);
+    background-color: var(--accent-color-3);
     padding:0.2rem;
     box-shadow: 0px 0px 0.5rem 0.15rem grey;
 }
@@ -62,7 +97,7 @@ main{
 }
 .selecteaza-cos{
     display: inline-block;
-    background-color: var(--culoare-mov);
+    background-color: var(--culoare-inchisa);
     position:absolute;
     bottom:0.5rem;
     right:0.5rem;
@@ -73,7 +108,7 @@ main{
 }
 
 .selecteaza-cos:hover{
-    background-color: var(--cl-marcare);
+    background-color: var(--accent-color-3);
     
-    border:1px solid  var(--culoare-mov);
+    border:1px solid  var(--culoare-inchisa);
 }

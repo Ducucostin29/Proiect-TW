@@ -1,6 +1,12 @@
+<script src="/resurse/js/tema.js"></script>
 <header>
     <h1>Solstice</h1>
     <h3>Infrunta zapezile cu incredere!</h3>
+    <button id="theme-switcher">Schimba tema
+        <img id="light-icon" src="/resurse/imagini/soare-icon.png" alt="light" width="20" height="20" >
+        <img id="dark-icon" src="/resurse/imagini/luna-icon.png" alt="dark" width="20" height="20">
+    </button>
+
     <nav>
 
         <label id="hamburger" for="ch-menu">
@@ -20,6 +26,8 @@
                     <li><a href="/index#index-intrebari">Intrebari</a></li>
                 </ul>
             </li>
+
+            <li><a href="/inregistrare">Inregistrare</a></li>
 
             <li><div>Produse</div>
                 <ul>
@@ -58,6 +66,10 @@
                     <a href="#">Contact</a>
                 </div>
             </li>
+            <%- include("submeniu-utilizator-logat.ejs",)
+            %>
+            <%- include("submeniu-administrare.ejs",)
+            %>
 
         </ul>
     </nav>

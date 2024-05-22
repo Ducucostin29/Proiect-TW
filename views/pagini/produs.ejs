@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html  lang="ro">
     <head>
-        <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
-        <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
+        <meta name="description" content="Solstice magazinul de sporturi de iarna pentru toti iubitorii de activitati pe zapada">
+        <meta name="keywords" content="schiuri, iarna, snowboard, echipament, clapari, bete, casca, boti, manusi, cagula, căciula, șosete, bluze termice, locație, transport, geaca, polar, articole, review, patine, sanie, ski, tabere, cursuri, second-hand, gutiera, huse, genti, rucsac, camere, zăpadă, sport, oferta, reduceri, pantaloni, ghete, adidasi">
         
-        <title>Cofetăria Dulcelind - home</title>
+        <title>Solstice</title>
         <%- include("../fragmente/head") %>     
         <link href="/resurse/css/produs.css" type="text/css" rel="stylesheet" />
     </head>
@@ -18,11 +18,13 @@
                     <h3><span class="nume"><%- locals.prod.nume %></span></h3>
                     <p>Pret: <span class="pret"><%- locals.prod.pret %> </span></p>
                     <p>Descriere: <span class="descriere"><%- locals.prod.descriere %> </span></p>
-                    <p>Ingrediente: <span class="ingrediente"><%- locals.prod.ingrediente %> </span></p>
-                    <p>Calorii: <span class="calorii"><%- locals.prod.calorii %> </span></p>
-                    <p>Gramaj: <span class="gramaj"><%- locals.prod.gramaj %> </span></p>
-                    <p>Categorie: <span class="categorie"><%- locals.prod.categorie %> </span></p>
-                    <p>Pentru diabetici: <span class="pt_diabetici"><%- locals.prod.pt_diabetici %> </span></p>
+                    <p>Materiale <span class="materiale"><%- locals.prod.materiale %> </span></p>
+                    <p>Categorie_mare: <span class="categorie_mare"><%- locals.prod.categorie_mare %> </span></p>
+                    <p>Categorie_mica: <span class="categorie_mica"><%- locals.prod.categorie_mica %> </span></p>
+                    <p>Masura: <span class="masura"><%- locals.prod.masura %> </span></p>
+                    <p>Culoare: <span class="culoare"><%- locals.prod.culoare %> </span></p>
+                    <p>Garantie: <span class="garantie"><%- locals.prod.garantie %> </span></p>
+                    <p>Posta: <span class="posta"><%- locals.prod.posta %> </span></p>
                     <p>Data adăugare: <span class="categorie"><%- locals.prod.data_adaugare %> </span></p>
                     <figure class="imag-produs">
                         <img  src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
