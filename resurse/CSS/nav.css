@@ -1,16 +1,14 @@
 :root {
-  --culoare-fundal: #65D5EB;
-  --primary-color: #2596BE;
-  --complementary-color-1: #00E0D5;
-  --complementary-color-2: #00E03C;
-  --accent-color-1: #005EE0;
-  --accent-color-2: #4BE0D8;
-  --accent-color-3: #00E088;
-  --background-image: url('/resurse/imagini/background-image-snowboard.jpg');
-  --text-color: black;
-  --culoare-deschisa:#00E0D5;
-  --culoare-inchisa: #005EE0;
-}
+    --culoare-fundal: #65D5EB;
+    --primary-color: #2596BE;
+    --complementary-color-1: #00E0D5;
+    --complementary-color-2: #00E03C;
+    --accent-color-1: #005EE0;
+    --accent-color-2: #4BE0D8;
+    --accent-color-3: #00E088;
+    --background-image: url('/resurse/imagini/background-light.jpg');
+    --text-color: black;
+  }
 
 
 body{

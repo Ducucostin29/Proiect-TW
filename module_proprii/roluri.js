@@ -32,7 +32,10 @@ class RolModerator extends Rol{
     static get tip() {return "moderator"}
     static get drepturi() { return [
         Drepturi.vizualizareUtilizatori,
-        Drepturi.stergereUtilizatori
+        Drepturi.stergereUtilizatori,
+        Drepturi.modificareProduse,
+        Drepturi.stergereProduse,
+        Drepturi.vizualizareRapoarte
     ] }
     constructor (){
         super()

@@ -25,10 +25,8 @@ body{
   --accent-color-1: #005EE0;
   --accent-color-2: #4BE0D8;
   --accent-color-3: #00E088;
-  --background-image: url('/resurse/imagini/background-image-snowboard.jpg');
+  --background-image: url('/resurse/imagini/background-light.jpg');
   --text-color: black;
-  --culoare-deschisa:#00E0D5;
-  --culoare-inchisa: #005EE0;
 }
 
 
@@ -239,19 +237,16 @@ body.dark {
 		}
 		#watermark::after{
 			
-			opacity:0.4;
-			padding:5px;
-      width: 4cm;
-      height:1cm;
-			display: block;
-			background: white;
-      font-weight: bold;
-			border:3px solid black;
-			border-top-left-radius:10px;
-			border-bottom-left-radius:10px;
-      border-top-right-radius:10px;
-			border-bottom-right-radius:10px;
-			content:"Apostu Alexandru-Costin";
+		opacity: 0.4;
+    padding: 5px;
+    width: 4cm;
+    height: 1cm;
+    display: block;
+    background: white;
+    font-weight: bold;
+    border: 3px solid black;
+    border-radius: 10px;
+    content: "Apostu Alexandru-Costin";
 		}
 
   #end {
@@ -277,6 +272,46 @@ body.dark {
   @page:right {
     margin-left: 1cm;
     margin-right: 3cm;
+  }
+}
+
+.banner {
+  display: none;
+  position: fixed;
+  bottom: -100px;
+  width: 100%;
+  background-color: #ffcc00;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 3s ease-in-out;
+}
+
+.banner.show {
+  display: block;
+  bottom: 20px;
+}
+
+.banner p {
+  margin: 0;
+  color: #000;
+}
+
+.banner button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    display: block;
+    bottom: 0;
+    position: static;
   }
 }
 

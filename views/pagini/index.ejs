@@ -4,6 +4,7 @@
     <%- include("../fragmente/head.ejs") %>
     <title>Solstice</title>
     <meta name = "keywords" content="schiuri, iarna, snowboard, echipament, clapari, bete, casca, boti, manusi, cagula, căciula, șosete, bluze termice, locație, transport, geaca, polar, articole, review, patine, sanie, ski, tabere, cursuri, second-hand, gutiera, huse, genti, rucsac, camere, zăpadă, sport, oferta, reduceri, pantaloni, ghete, adidasi">
+    <script src="index.js"></script>
     <meta name ="description" content="Magazin de echipamente de iarna Solstice. Infrunta zapezile cu incredere">
 </head>
 
@@ -130,10 +131,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Proin commodo, arcu in mollis ullamcorper, tortor elit pulvinar dui, at vehicula mauris felis laoreet mauris. Nunc vulputate risus ex.</p>
             </section>
             <section id="utilizatori">
-                <h1>utilizatori</h1>
-                <h1>utilizatori</h1>
-                <h1>utilizatori</h1>
-                <h1>utilizatori</h1>
+                <%- include("../fragmente/useri-online.ejs")%>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Proin commodo, arcu in mollis ullamcorper, tortor elit pulvinar dui, at vehicula mauris felis laoreet mauris. Nunc vulputate risus ex.</p>
             </section>
             <section id="date_utilizator">
@@ -201,6 +199,12 @@
                 <h2>Parteneri</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Proin commodo, arcu in mollis ullamcorper, tortor elit pulvinar dui, at vehicula mauris felis laoreet mauris. Nunc vulputate risus ex.</p>
             </section>
+        </div>
+
+        <div id="absolut" class="banner">
+            <p>Acesta este un proiect școlar!</p>
+            <p>Acceptați cookie-uri?</p>
+            <button id="acceptButton">OK</button>
         </div>
 
         <section id="Produse">
