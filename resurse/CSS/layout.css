@@ -48,6 +48,7 @@ body.dark {
   --text-color: red;
 }
 
+/*-------------------------------grid--------------------------------------*/
 #grid-pagina{
     display: grid;
     gap: 10px;
@@ -132,6 +133,7 @@ body.dark {
                 }
             }
 
+/*-------------------------------video--------------------------------------*/            
 .video-player {
     display: block;
     margin: 0 auto;
@@ -145,6 +147,7 @@ body.dark {
     background-clip: text; 
 }
 
+/*-------------------------------separator--------------------------------------*/   
 #separator {
   height: 20px; /* Înălțimea hr-ului */
   border: none;
@@ -159,6 +162,7 @@ body.dark {
   background-position: 0 0,35% 33.33%, 0 66.67%; /* Plasarea fiecărui gradient pe verticală */
 }
 
+/*-------------------------------imaginea cu cele 2 culori peste ea--------------------------------------*/   
 .duotone-image-container {
     position: relative;
     display: inline-block;
@@ -238,7 +242,7 @@ body.dark {
     }
   }
   
-
+/*-------------------------------text in oglinda--------------------------------------*/   
   #anunturi {
     display: flex; /* Utilizează flexbox pentru a organiza elementele copil într-un container flexibil. */
     flex-wrap: wrap; /* Specifică modul în care elementele copil trebuie să fie plasate pe mai multe linii în containerul flexibil atunci când nu încap pe o singură linie. */

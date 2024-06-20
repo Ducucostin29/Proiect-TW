@@ -15,6 +15,7 @@ const Drepturi = require("./module_proprii/drepturi.js");
 const { table } = require("console");
 const QRCode= require('qrcode');
 const puppeteer=require('puppeteer');
+const { startOfferGeneration } = require('./resurse/js/genereazaOferte');
 
 
 var client= new Client({database:"cti_2024",
@@ -71,9 +72,10 @@ app.use(session({ // aici se creeaza proprietatea session a requestului (pot fol
 }));
 
 app.use("/*",function(req, res, next){
-    res.locals.optiuniMeniu=obGlobal.optiuniMeniu;
+    res.locals.optiuniMeniu=obGlobal.optiuniMeniu; // Setează variabila locală optiuniMeniu din res.locals folosind obGlobal.optiuniMeniu
     res.locals.Drepturi=Drepturi;
     if (req.session.utilizator){
+        // Creează un obiect Utilizator folosind datele de sesiune și îl setează în req.utilizator și res.locals.utilizator
         req.utilizator=res.locals.utilizator=new Utilizator(req.session.utilizator);
     }    
     next();
@@ -217,17 +219,120 @@ app.get("/produse",function(req,res){
     })
 })
 
-app.get("/produs/:id",function(req,res){
-    client.query(`select * from produse_iarna where id=${req.params.id}`,function(err,rez){
-        if(err){
+//-----------------------------Seturi---------------------------------------------
+app.get("/seturi", function(req, res) {
+    client.query(`
+        SELECT s.id, s.nume_set, s.descriere_set, 
+               array_agg(p.nume) AS produse, 
+               array_agg(p.pret) AS preturi, 
+               array_agg(p.id) AS produs_ids
+        FROM seturi s
+        JOIN asociere_set a ON s.id = a.id_set
+        JOIN produse_iarna p ON a.id_prod_iarna = p.id
+        GROUP BY s.id, s.nume_set, s.descriere_set
+    `, function(err, result) {
+        if (err) {
             console.log(err);
             afisareEroare(res, 2);
+        } else {
+            let seturi = result.rows.map(set => {
+                let pret_total = set.preturi.reduce((total, pret) => total + parseFloat(pret), 0);
+                let n = set.preturi.length;
+                let reducere = Math.min(5, n) * 5;
+                let pret_final = pret_total * (1 - reducere / 100);
+                return { ...set, pret_total, pret_final };
+            });
+            res.render("pagini/seturi", { seturi });
         }
-        else{
-        res.render("pagini/produs",{prod:rez.rows[0]})
-    }
-    })
-})
+    });
+});
+
+//--------------------------------------------------------------- Produs -----------------------------------
+app.get("/produs/:id", function(req, res) {
+    let produsId = req.params.id;
+    
+    // Interogarea pentru detaliile produsului
+    let queryProdus = `SELECT * FROM produse_iarna WHERE id = $1`;
+    
+    // Interogarea pentru seturile care conțin produsul
+    let querySeturi = `
+        SELECT s.id, s.nume_set, s.descriere_set, 
+               array_agg(p.nume) AS produse, 
+               array_agg(p.id) AS produs_ids, 
+               array_agg(p.pret) AS preturi
+        FROM seturi s
+        JOIN asociere_set a ON s.id = a.id_set
+        JOIN produse_iarna p ON a.id_prod_iarna = p.id
+        WHERE s.id IN (SELECT id_set FROM asociere_set WHERE id_prod_iarna = $1)
+        GROUP BY s.id, s.nume_set, s.descriere_set
+    `;
+    
+    client.query(queryProdus, [produsId], function(errProdus, resultProdus) {
+        if (errProdus || resultProdus.rows.length == 0) {
+            console.log(errProdus);
+            afisareEroare(res, 2);
+        } else {
+            let produs = resultProdus.rows[0];
+            
+            client.query(querySeturi, [produsId], function(errSeturi, resultSeturi) {
+                if (errSeturi) {
+                    console.log(errSeturi);
+                    afisareEroare(res, 2);
+                } else {
+                    let seturi = resultSeturi.rows.map(set => {
+                        let pret_total = set.preturi.reduce((total, pret) => total + parseFloat(pret), 0);
+                        let n = set.preturi.length;
+                        let reducere = Math.min(5, n) * 5;
+                        let pret_final = pret_total * (1 - reducere / 100);
+                        return { ...set, pret_total, pret_final };
+                    });
+
+                    res.render("pagini/produs", { prod: produs, seturi: seturi });
+                }
+            });
+        }
+    });
+});
+
+
+//--------------------------------------Compara----------------------------------------
+
+// Definirea unei rute GET pentru /compara
+app.get("/compara", function(req, res) {
+    // Obținerea ID-urilor produselor din query string-ul URL-ului
+    let produs1Id = req.query.produs1;
+    let produs2Id = req.query.produs2;
+
+    // Definirea unei interogări SQL pentru a selecta un produs din tabelul produse_iarna pe baza ID-ului
+    let queryProdus = `SELECT * FROM produse_iarna WHERE id = $1`;
+
+    // Executarea interogării pentru primul produs
+    client.query(queryProdus, [produs1Id], function(errProdus1, resultProdus1) {
+        // Verificarea erorilor și dacă există rezultate pentru primul produs
+        if (errProdus1 || resultProdus1.rows.length == 0) {
+            console.log(errProdus1); // Afișarea erorii în consolă
+            afisareEroare(res, 2); // Trimiterea unei pagini de eroare utilizatorului
+        } else {
+            // Stocarea informațiilor despre primul produs
+            let produs1 = resultProdus1.rows[0];
+            
+            // Executarea interogării pentru al doilea produs
+            client.query(queryProdus, [produs2Id], function(errProdus2, resultProdus2) {
+                // Verificarea erorilor și dacă există rezultate pentru al doilea produs
+                if (errProdus2 || resultProdus2.rows.length == 0) {
+                    console.log(errProdus2); // Afișarea erorii în consolă
+                    afisareEroare(res, 2); // Trimiterea unei pagini de eroare utilizatorului
+                } else {
+                    // Stocarea informațiilor despre al doilea produs
+                    let produs2 = resultProdus2.rows[0];
+                    
+                    // Randerizarea paginii de comparație cu informațiile despre cele două produse
+                    res.render("pagini/compara", { produs1: produs1, produs2: produs2 });
+                }
+            });
+        }
+    });
+});
 
 // ---------------------------------  cos virtual --------------------------------------
 
@@ -380,12 +485,6 @@ app.post("/inregistrare",function(req, res){
             console.log(eroare);
             res.render("pagini/inregistrare", {err: "Eroare: "+eroare})
         }
-   
-
-
-
-
-
 
     });
     formular.on("field", function(nume,val){  // 1
@@ -426,14 +525,18 @@ app.post("/login",function(req, res){
     */
     var username;
     console.log("ceva");
-    var formular= new formidable.IncomingForm()
+    // Crearea unui nou obiect formidable.IncomingForm pentru a gestiona datele de formular încărcate
+    var formular= new formidable.IncomingForm()//
     
-    formular.parse(req, function(err, campuriText, campuriFisier ){
-        var parametriCallback= {
-            req:req,
-            res:res,
-            parola:campuriText.parola[0]
-        }
+    // Parsarea datelor din cererea POST
+    formular.parse(req, function(err, campuriText, campuriFisier) {
+        
+        // Definirea parametrilor pentru funcția de callback
+        var parametriCallback = {
+            req: req,                    // Cererea HTTP curentă
+            res: res,                    // Răspunsul HTTP curent
+            parola: campuriText.parola[0]// Parola introdusă în formular (primul câmp de tip text cu numele 'parola')
+        };
         Utilizator.getUtilizDupaUsername (campuriText.username[0],parametriCallback, 
             function(u, obparam,eroare){
             let parolaCriptata=Utilizator.criptareParola(obparam.parola)
@@ -604,7 +707,7 @@ app.get("/*", function (req, res) {
     try {
         res.render("pagini" + req.url, function (err, rezHtml) {
             // console.log(rezHtml);
-            // console.log("Eroare:" + err)
+            // console.log("Eroare:" , err)
             if (err) {
                 if (err.message.startsWith("Failed to lookup view")) {
                     afisareEroare(res, 404);
@@ -630,52 +733,55 @@ app.get("/*", function (req, res) {
         
 
 function initErori(){
-    var continut=fs.readFileSync(path.join(__dirname,"resurse/json/erori.json")).toString("utf-8")
+    var continut = fs.readFileSync(path.join(__dirname, "resurse/json/erori.json")).toString("utf-8");
     console.log(continut);
-
     obGlobal.obErori=JSON.parse(continut);
-    for (let eroare of obGlobal.obErori.info_erori){
+    for( let eroare of obGlobal.obErori.info_erori){
         eroare.imagine=path.join(obGlobal.obErori.cale_baza,eroare.imagine)
     }
-    obGlobal.obErori.eroare_default=path.join(obGlobal.obErori.cale_baza,obGlobal.obErori.eroare_default.imagine)
-    console.log(obGlobal.obErori);
+    obGlobal.obErori.eroare_default.imagine=path.join(obGlobal.obErori.cale_baza,obGlobal.obErori.eroare_default.imagine);
+    //console.log(obGlobal.obErori);
 }
-
-initErori()
-
+initErori();
 function afisareEroare(res, _identificator, _titlu, _text, _imagine){
+    // Căutăm eroarea în lista de erori după identificator
     let eroare=obGlobal.obErori.info_erori.find(
         function(elem){
-            return elem.identificator=_identificator
+            return elem.identificator==_identificator;
         }
-    )
+    );
     if(!eroare){
         let eroare_default=obGlobal.obErori.eroare_default;
-        res.render("eroare", {
+        res.render("pagini/eroare",{
             titlu: _titlu || eroare_default.titlu,
             text: _text || eroare_default.text,
-            imagine: _imagine || eroare_default.imagine
-        })//al doilea arg este locals
-        return;
+            imagine: _imagine || eroare_default.imagine,
+        }
+        );//al doilea argument este locals
     }
     else{
-        if(eroare.status)
-            res.status(eroare.identificator)
-        res.render("pagini/eroare", {
+        if(eroare.status){
+            res.status(eroare.identificator);
+        }
+        // Renderizăm pagina de eroare cu detalii specifice erorii
+        res.render("pagini/eroare",{
             titlu: _titlu || eroare.titlu,
-            text: _text || eroare.text,
-            imagine: _imagine || eroare.imagine
-        })
+            text: _titlu || eroare.text,
+            imagine: _imagine || eroare.imagine,
+        }
+        )
     }
 }
-
+// Funcție pentru inițializarea imaginilor
 function initImagini(){
+    // Citim conținutul fișierului galerie.json și îl convertim în string
     var continut= fs.readFileSync(__dirname+"/resurse/json/galerie.json").toString("utf-8");
 
-
+    // Parsăm conținutul JSON și îl stocăm în obGlobal.obImagini
     obGlobal.obImagini=JSON.parse(continut);
     let vImagini=obGlobal.obImagini.imagini;
 
+    // Obținem căile absolute pentru directorul de galerie și subdirectorul mediu
     let caleAbs=path.join(__dirname,obGlobal.obImagini.cale_galerie);
     let caleAbsMediu=path.join(__dirname,obGlobal.obImagini.cale_galerie, "mediu");
     if (!fs.existsSync(caleAbsMediu))

@@ -12,7 +12,7 @@
     <p id="watermark"></p>
 </body>
 <body>
-    <%- include("../fragmente/header.ejs") %>
+    <%- include("../fragmente/header.ejs") %><!--serverul executa-->
     <main>
         
         <div id="grid-pagina">
@@ -127,11 +127,16 @@
                     </div>
                 </div>
 
-                <div class="intro-tabel"><div>Casca schi reducere</div><div>snowboard placa reducere</div><div>bete leki la super oferta</div></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Proin commodo, arcu in mollis ullamcorper, tortor elit pulvinar dui, at vehicula mauris felis laoreet mauris. Nunc vulputate risus ex.</p>
+                <div id="oferta-container" class="oferta-container">
+                    <h2>Oferta Curentă</h2>
+                    <p id="oferta-text"></p>
+                    <p id="timer"></p>
+                        
+                </div>
+
             </section>
             <section id="utilizatori">
-                <%- include("../fragmente/useri-online.ejs")%>
+                <%- include("../fragmente/useri-online.ejs") %>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Proin commodo, arcu in mollis ullamcorper, tortor elit pulvinar dui, at vehicula mauris felis laoreet mauris. Nunc vulputate risus ex.</p>
             </section>
             <section id="date_utilizator">

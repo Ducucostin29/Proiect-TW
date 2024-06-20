@@ -7,6 +7,7 @@
         <title>Solstice</title>
         <%- include("../fragmente/head") %>     
         <link href="/resurse/css/produs.css" type="text/css" rel="stylesheet" />
+        <script src="/resurse/js/compara.js"></script>
     </head>
     <body>
     <%- include("../fragmente/header") %>
@@ -19,8 +20,8 @@
                     <p>Pret: <span class="pret"><%- locals.prod.pret %> </span></p>
                     <p>Descriere: <span class="descriere"><%- locals.prod.descriere %> </span></p>
                     <p>Materiale <span class="materiale"><%- locals.prod.materiale %> </span></p>
-                    <p>Categorie_mare: <span class="categorie_mare"><%- locals.prod.categorie_mare %> </span></p>
-                    <p>Categorie_mica: <span class="categorie_mica"><%- locals.prod.categorie_mica %> </span></p>
+                    <p>Categoriee: <span class="categoriee"><%- locals.prod.categoriee %> </span></p>
+                    <p>Categorie <span class="categorie"><%- locals.prod.categorie %> </span></p>
                     <p>Masura: <span class="masura"><%- locals.prod.masura %> </span></p>
                     <p>Culoare: <span class="culoare"><%- locals.prod.culoare %> </span></p>
                     <p>Garantie: <span class="garantie"><%- locals.prod.garantie %> </span></p>
@@ -32,7 +33,32 @@
                 </article>
             
         </section>
+
+        <h3>Seturi care includ acest produs</h3>
+                <% seturi.forEach(set => { %>
+                    <div class="set">
+                        <h4><%= set.nume_set %></h4>
+                        <p><%= set.descriere_set %></p>
+                        <ul>
+                            <% set.produse.forEach((produs, index) => { %>
+                                <li>
+                                    <a href="/produs/<%= set.produs_ids[index] %>"><%= produs %></a> - <%= set.preturi[index] %> RON
+                                </li>
+                            <% }) %>
+                        </ul>
+                        <p>Preț total: <%= set.pret_total.toFixed(2) %> RON</p>
+                        <p>Preț final cu reducere: <%= set.pret_final.toFixed(2) %> RON</p>
+                    </div>
+                <% }) %>
+
+        <button class="compara-btn" onclick="adaugaLaComparare('<%- prod.id %>', '<%- prod.nume %>')">Compară</button>
+                <div id="container-comparare" style="display: none; position: fixed; bottom: 10px; right: 10px; background: #fff; border: 1px solid #ccc; padding: 10px;">
+                    <div id="produse-comparare"></div>
+                    <button onclick="afiseazaComparare()">Afișează</button>
+                </div>
     </main>
+
+    
 
     <%- include("../fragmente/footer") %>
     </body>

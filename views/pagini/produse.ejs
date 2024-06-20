@@ -8,12 +8,22 @@
         <%- include("../fragmente/head") %>     
         <script type="text/javascript" src=/resurse/js/produse.js></script>
         <script type="text/javascript" src=/resurse/js/produse-cos.js></script>
+        <script type="text/javascript" src="/resurse/js/compara.js"></script>
+        <script type="text/javascript" src=/resurse/js/oferte.js></script>
 
     </head>
     <body>
     <%- include("../fragmente/header") %>
 
     <main>
+<!---------------Oferta bonus-------------------------------------->
+        <div id="oferta-container" class="oferta-container">
+            <h2>Oferta Curentă</h2>
+            <p id="oferta-text"></p>
+            <p id="timer"></p>
+                
+        </div>
+
         <div class="container">
             <div class="row">
                 <label> Nume (se poate folosi "*"): <input type="text" id="inp-nume"></label>
@@ -128,13 +138,14 @@
             <div class="grid-produse">
                 <% for( let prod of locals.produse) { %>
                     <article class="produs" >
+                        
                         <h3 class="nume">Nume: <a href="/produs/<%-prod.id %>" ><span class="val-nume"><%- prod.nume%></span></a></h3>
                         <div class="info-prod">
                             <p class="pret">Pret: <span class="val-pret"><%- prod.pret%></span></p>
                             <p class="masura">Masura: <span class="val-masura"><%- prod.masura%></span></p>
                         </div>
-                        <p class="categorie_mare">Categorie mare:<span class="val-categorie-mare"><%- prod.categorie_mare%></span></p>
-                        <p class="categorie_mica">Categorie mica:<span class="val-categorie-mica"><%- prod.categorie_mica%></span></p>
+                        <p class="categorie">Categoriee:<span class="val-categoriee"><%- prod.categoriee%></span></p>
+                        <p class="categorie">Categorie:<span class="val-categorie"><%- prod.categorie%></span></p>
                         <p class="descriere">descriere: <span class="val-descriere"><%- prod.descriere%></span></p>
 
                         <div class="info-prod">
@@ -208,6 +219,12 @@
                     </article>
                 <% }%>
             </div>
+<!-------------------------Compara Bonus--------------------------------------->
+            <div id="container-comparare"
+            style="display: none; position: fixed; bottom: 10px; right: 10px; background: #fff; border: 1px solid #ccc; padding: 10px;">
+            <div id="produse-comparare"></div>
+            <button onclick="afiseazaComparare()">Afișează</button>
+        </div>
         </section>
     </main>
 

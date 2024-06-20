@@ -1,0 +1,40 @@
+Layout: grid linia 51 etapa 2
+	video linia 136 etapa 4
+	separator linia 150 etapa 5
+	imaginea cu cele 2 culori peste ea linia 165 etapa 5
+	reflexie linia 245 etapa 5
+
+General: paleta cromatica linia 1 etapa 2
+	 link top linia 56 etapa 2
+	 tabel linia 89 etapa 2
+	 iframe linia 135 etapa 2
+	 printare linia 171 etapa 3
+	 link-uri linia 326 etapa 4
+	 oferte linia 377 bonus
+
+Nav, Nav 700, Nav 1000 - etapa 3
+
+Bonusuri etapa 6
+ Comparare 
+	-Produse ejs linia 222
+	-Fisier Comparare ejs
+	-Fisier Comparare js
+	-Index js linia 297
+	-Produs ejs linia 54
+	-Comparare Css
+	
+
+ oferte
+	-Produse ejs linia 19
+	-GenereazaOferte js
+	-Oferte json
+	-Index ejs linia 130
+	-General css linia 387
+
+ seturi
+	-Seturi ejs
+	-Index js linia 221
+	-Produs ejs linia 37
+
+	
+	 

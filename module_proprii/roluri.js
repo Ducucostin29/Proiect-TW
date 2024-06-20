@@ -53,6 +53,7 @@ class RolClient extends Rol{
 }
 
 class RolFactory{
+    // Metoda statică pentru crearea de roluri în funcție de tipul specificat
     static creeazaRol(tip) {
         switch(tip){
             case RolAdmin.tip : return new RolAdmin();
@@ -65,5 +66,6 @@ class RolFactory{
 
 module.exports={
     RolFactory:RolFactory,
-    RolAdmin:RolAdmin
+    RolAdmin:RolAdmin,
+    RolModerator:RolModerator
 }

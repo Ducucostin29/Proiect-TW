@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compară Produse</title>
+    <%- include("../fragmente/head") %> 
+    <link rel="stylesheet" href="/resurse/css/compara.css" type="text/css">    
+
+</head>
+<body>
+    <%- include("../fragmente/header.ejs") %>
+    <h1>Compară Produse</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nume</th>
+                <th><%= produs1.nume %></th>
+                <th><%= produs2.nume %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Preț</td>
+                <td><%= produs1.pret %> Lei</td>
+                <td><%= produs2.pret %> Lei</td>
+            </tr>
+            <tr>
+                <td>Categorie</td>
+                <td><%= produs1.categorie %></td>
+                <td><%= produs2.categorie %></td>
+            </tr>
+            <tr>
+                <td>Masura</td>
+                <td><%= produs1.masura %></td>
+                <td><%= produs2.masura %></td>
+            </tr>
+            <tr>
+                <td>Culoare</td>
+                <td><%= produs1.culoare %></td>
+                <td><%= produs2.culoare %></td>
+            </tr>
+            <tr>
+                <td>Garantie</td>
+                <td><%= produs1.garantie ? 'Da' : 'Nu' %></td>
+                <td><%= produs2.garantie ? 'Da' : 'Nu' %></td>
+            </tr>
+            <tr>
+                <td>Posta</td>
+                <td><%= produs1.posta ? 'Da' : 'Nu' %></td>
+                <td><%= produs2.posta ? 'Da' : 'Nu' %></td>
+            </tr>
+            <tr>
+                <td>Data adăugării</td>
+                <td><time datetime="<%= produs1.data_adaugare %>"><%= new Date(produs1.data_adaugare).toLocaleDateString('ro-RO', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' }) %></time></td>
+                <td><time datetime="<%= produs2.data_adaugare %>"><%= new Date(produs2.data_adaugare).toLocaleDateString('ro-RO', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' }) %></time></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<%- include("../fragmente/footer") %>
+
+</html>

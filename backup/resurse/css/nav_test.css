@@ -1,9 +1,42 @@
-@charset "UTF-8";
 nav {
   --inaltime-meniu:2.5em;
   --latime-buton:150px;
   height: var(--inaltime-meniu);
   background-color: var(--culoare-deschisa);
+}
+
+.meniu ul, .meniu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: var(--culoare-deschisa);
+}
+
+/*submeniu*/
+.meniu {
+  display: flex;
+}
+
+.meniu ul {
+  display: none;
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.meniu li {
+  border: 1px solid var(--culoare-inchisa);
+  width: var(--latime-buton);
+  height: var(--inaltime-meniu);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.meniu li :hover > ul {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  animation: animatie_submeniu 1s linear 1 forwards;
+  transform-origin: center t;
 }
 
 #hamburger, #ch-menu {
@@ -14,96 +47,27 @@ nav {
   display: none;
 }
 
-.meniu {
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-  background-color: var(--culoare-deschisa);
-}
-
-.meniu ul {
-  list-style-type: none;
-  display: none;
-  position: absolute;
-  top: 100%; /* Submeniul se va poziționa sub buton */
-  left: 0;
+.meniu li div, .meniu li a {
+  display: block;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  background-color: var(--culoare-deschisa);
-  transform-origin: center;
-  transform: scaleY(0); /* Inițial submeniul este ascuns */
-  transition: transform 0.2s ease-in-out;
-}
-
-.meniu ul li {
-  display: inline-block;
-}
-
-.meniu ul li a {
-  display: block;
-  width: auto;
-}
-
-.meniu li {
-  position: relative;
-  display: inline-block;
-  width: var(--latime-buton);
-  height: var(--inaltime-meniu);
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.meniu li div {
+  height: 100%;
+  cursor: pointer;
   line-height: var(--inaltime-meniu);
   color: var(--culoare-text);
-  cursor: pointer;
   text-decoration: none;
   box-sizing: border-box;
   transition: all 1s linear;
 }
 
-.meniu li a {
-  line-height: var(--inaltime-meniu);
-  color: var(--culoare-text);
-  cursor: pointer;
-  text-decoration: none;
-  box-sizing: border-box;
-  transition: all 1s linear;
+.meniu li:hover > div, .meniu li:hover > a {
+  background-color: var(--culoare-inchisa);
+  color: var(--culoare-text-selectat);
 }
 
-.meniu li:hover > ul {
-  display: block;
-  position: absolute;
-  z-index: 100;
-  transform-origin: center;
-  animation: animatie-submeniu 1s linear 1 forwards;
-}
-
-@keyframes animatie-submeniu {
+/*aparitie submeniu*/
+@keyframes animatie_submeniu {
   100% {
     opacity: 1;
     transform: scaleY(1);
   }
-}
-.meniu li:hover > a {
-  background-color: var(--culoare-inchisa);
-}
-
-.meniu li div::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%; /* Lățimea va fi mai mare decât butonul */
-  height: 7px; /* Înălțimea barei */
-  background: linear-gradient(to right, var(--culoare-deschisa), white); /* Gradient de la negru la alb */
-  transform-origin: left;
-  transform: scaleX(0); /* Inițial bara este invizibilă */
-  transition: transform 0.3s ease; /* Efect de tranziție */
-}
-
-.meniu li div:hover::before {
-  transform-origin: right;
-  transform: scaleX(1); /* Barele se vor extinde */
 }

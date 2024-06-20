@@ -30,7 +30,6 @@
     --culoare-inchisa: #070448;
     --culoare-deschisa: #005BBB;;
   }
-
 main{
     --padd-main:1rem;
     padding-left:var(--padd-main);

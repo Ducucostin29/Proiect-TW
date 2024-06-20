@@ -18,7 +18,7 @@ window.addEventListener("load",function(){
     }
 
 
-    //document.getElementById("filtrare").addEventListener("click",function(){})
+    document.getElementById("filtrare").addEventListener("click",function(){})
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("filtrare").onclick = function() {
             var inpNume = document.getElementById("inp-nume").value.toLowerCase().trim();
@@ -94,7 +94,7 @@ window.addEventListener("load",function(){
         };
     
         function matchPattern(string, pattern) {
-            var regex = new RegExp("^" + pattern.split("*").map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join(".*") + "$", "gi");
+            var regex = new RegExp("^" + pattern.split("+").map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join(".*") + "$", "gi");
             return string.match(regex);
         }
     });
